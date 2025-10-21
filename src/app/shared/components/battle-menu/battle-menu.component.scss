@@ -1,30 +1,118 @@
+// ============================================
+// AUTHENTIC POKÉMON GEN 1/2 BATTLE MENU
+// Based on Game Boy Red/Blue/Yellow menu layout
+// ============================================
+
 .battle-menu {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0;
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
   background: #f8f8f0;
   border: 4px solid #000;
+  opacity: 0;
+  box-sizing: border-box;
+
+  // INSTANT pop-in with scale bounce
+  &.animate-entrance {
+    animation: menuPopIn 0.2s steps(3) forwards;
+  }
 
   .menu-option {
-    flex: 1 1 calc(50% - 8px);
-    min-width: 150px;
-    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 4px;
     background: #fff;
-    border: 2px solid #000;
-    text-align: center;
+    border: none; // No grid lines
+    font-family: 'Courier New', monospace;
+    font-size: 24px;
     font-weight: bold;
     text-transform: uppercase;
+    color: #000;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: none; // NO smooth transitions
+    opacity: 0;
+    position: relative;
+    box-sizing: border-box;
 
-    &:hover {
-      background: #ffe4b5;
-      transform: scale(1.05);
+    // All options appear together instantly
+    &.animate-option {
+      animation: optionPopIn 0.1s steps(2) forwards;
     }
 
-    &:active {
-      transform: scale(0.95);
+    &.disabled {
+      pointer-events: none;
+      cursor: not-allowed;
+      opacity: 0.3;
+    }
+
+    // Game Boy style hover effects - arrow only
+    &:not(.disabled) {
+      &:active {
+        transform: scale(0.98);
+        transition: none;
+      }
+    }
+
+    // Add selection indicator (like Game Boy)
+    &:not(.disabled)::before {
+      content: '►';
+      position: absolute;
+      left: 8px;
+      opacity: 0;
+      transition: none;
+      font-size: 20px;
+    }
+
+    &:not(.disabled):hover::before {
+      opacity: 1;
+    }
+  }
+}
+
+// ============================================
+// KEYFRAME ANIMATIONS - GEN 1/2 STYLE
+// ============================================
+
+// Menu instant pop with slight scale bounce
+@keyframes menuPopIn {
+  0% { 
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  66% { 
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  100% { 
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+// Options appear instantly (no stagger)
+@keyframes optionPopIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+// ============================================
+// ACCESSIBILITY - REDUCED MOTION
+// ============================================
+@media (prefers-reduced-motion: reduce) {
+  .battle-menu {
+    animation-duration: 0.01s !important;
+    opacity: 1 !important;
+    transform: none !important;
+
+    .menu-option {
+      animation-duration: 0.01s !important;
+      opacity: 1 !important;
+      transform: none !important;
     }
   }
 }

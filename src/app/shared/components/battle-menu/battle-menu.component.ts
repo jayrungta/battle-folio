@@ -12,9 +12,17 @@ import { BattleOption } from '../../../core/models';
 })
 export class BattleMenuComponent {
   @Input() options: BattleOption[] = [];
+  @Input() disabled: boolean = false;
+  @Input() animateEntrance: boolean = false;
   @Output() optionSelected = new EventEmitter<BattleOption>();
 
-  onOptionClick(option: BattleOption): void {
+  onOptionClick(option: BattleOption, event: Event): void {
+    // Prevent navigation when disabled
+    if (this.disabled) {
+      event.preventDefault();
+      event.stopPropagation();
+      return;
+    }
     this.optionSelected.emit(option);
   }
 }

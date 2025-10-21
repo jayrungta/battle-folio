@@ -1,20 +1,61 @@
-<div class="battle-screen">
-  <div class="trainer-area">
-    <div class="trainer-sprite">
-      <div class="placeholder-sprite">👤</div>
-      <div class="trainer-name">Portfolio Trainer</div>
-    </div>
-  </div>
+<!-- White flash effect -->
+<div class="white-flash" *ngIf="showWhiteFlash"></div>
 
-  <div class="battle-interface">
-    <div class="dialog-area">
-      <div class="dialog-text">
-        What will you do?
+<div class="battle-screen" 
+     [class.transition]="animationState === 'transition'" 
+     [class.ready]="animationState === 'ready'">
+  
+  <!-- Battle Arena (Top Section) -->
+  <div class="battle-arena">
+    <!-- Opponent Section (Top) -->
+    <div class="opponent-section">
+      <div class="opponent-pokemon-status">
+        <div class="pokemon-count">
+          <div class="pokeball-icon" *ngFor="let i of [1,2,3,4,5,6]"></div>
+        </div>
+      </div>
+      <div class="opponent-trainer" 
+           [class.animate-entrance]="animationState === 'transition' || animationState === 'ready'">
+        <div class="trainer-sprite">👤</div>
+        <div class="trainer-name">TRAINER X</div>
       </div>
     </div>
 
-    <div class="menu-area">
-      <app-battle-menu [options]="battleOptions"></app-battle-menu>
+    <!-- Player Section (Bottom) -->
+    <div class="player-section">
+      <div class="player-pokemon-status">
+        <div class="pokemon-count">
+          <div class="pokeball-icon" *ngFor="let i of [1,2,3,4,5,6]"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Battle Message Box (Bottom Section) -->
+  <div class="battle-message-box" 
+       [class.animate-entrance]="animationState === 'transition' || animationState === 'challenge' || animationState === 'ready'">
+    
+    <!-- Left Half: Message or Empty Space -->
+    <div class="left-section">
+      <!-- "Wants to Battle" Message - Only show during challenge phase -->
+      <div class="battle-challenge" 
+           *ngIf="animationState === 'challenge'">
+        <div class="message-text">TRAINER X wants to battle!</div>
+        <div class="message-arrow">▼</div>
+      </div>
+    </div>
+
+    <!-- Right Half: Battle Menu -->
+    <div class="right-section">
+      <div class="battle-menu-container" 
+           *ngIf="animationState === 'ready'"
+           [class.animate-entrance]="animationState === 'ready'">
+        <app-battle-menu 
+          [options]="battleOptions" 
+          [disabled]="animationState !== 'ready'"
+          [animateEntrance]="animationState === 'ready'">
+        </app-battle-menu>
+      </div>
     </div>
   </div>
 </div>

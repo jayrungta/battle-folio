@@ -1,5 +1,11 @@
-<div class="battle-menu">
-  <div *ngFor="let option of options" class="menu-option" [routerLink]="option.route">
+<div class="battle-menu" [class.animate-entrance]="animateEntrance">
+  <div 
+    *ngFor="let option of options" 
+    class="menu-option" 
+    [class.disabled]="disabled"
+    [class.animate-option]="animateEntrance"
+    [routerLink]="disabled ? null : option.route"
+    (click)="onOptionClick(option, $event)">
     {{ option.label }}
   </div>
 </div>
