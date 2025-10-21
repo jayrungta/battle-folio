@@ -15,9 +15,9 @@
         </div>
       </div>
       <div class="opponent-trainer" 
-           [class.animate-entrance]="animationState === 'transition' || animationState === 'ready'">
-        <div class="trainer-sprite">👤</div>
-        <div class="trainer-name">TRAINER X</div>
+           [class.animate-entrance]="animationState === 'challenge' || animationState === 'ready'">
+        <img [src]="trainerSprite" alt="Trainer" class="trainer-sprite">
+        <div class="trainer-name">{{ trainerName }}</div>
       </div>
     </div>
 
@@ -40,7 +40,7 @@
       <!-- "Wants to Battle" Message - Only show during challenge phase -->
       <div class="battle-challenge" 
            *ngIf="animationState === 'challenge'">
-        <div class="message-text">TRAINER X wants to battle!</div>
+        <div class="message-text">{{ trainerName }} wants to battle!</div>
         <div class="message-arrow">▼</div>
       </div>
     </div>

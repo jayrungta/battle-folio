@@ -1,4 +1,5 @@
 export interface SiteConfig {
+  trainerName: string;
   battleOptions: BattleOption[];
 }
 

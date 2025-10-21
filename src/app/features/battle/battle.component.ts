@@ -19,6 +19,9 @@ export class BattleComponent implements OnInit, AfterViewInit {
   battleOptions: BattleOption[] = [];
   animationState: AnimationState = 'loading';
   showWhiteFlash: boolean = false;
+  trainerSprite: string = 'assets/images/trainers/trainer-sprite.png';
+  trainerName: string = 'TRAINER X';
+  private static hasPlayedIntro: boolean = false;
 
   // Animation timing constants - Gen 1/2 style (FAST and SNAPPY)
   private readonly ANIMATION_TIMINGS = {
@@ -37,6 +40,7 @@ export class BattleComponent implements OnInit, AfterViewInit {
       next: (config) => {
         this.siteConfig = config;
         this.battleOptions = config.battleOptions;
+        this.trainerName = config.trainerName || 'TRAINER X';
       },
       error: (error) => {
         console.error('Error loading site config:', error);
@@ -45,6 +49,16 @@ export class BattleComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+    // Check if intro has already been played
+    if (BattleComponent.hasPlayedIntro) {
+      // Skip straight to ready state
+      this.animationState = 'ready';
+      return;
+    }
+
+    // Mark intro as played
+    BattleComponent.hasPlayedIntro = true;
+
     // White flash at start
     setTimeout(() => {
       this.showWhiteFlash = true;
