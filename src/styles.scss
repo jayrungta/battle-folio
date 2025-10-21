@@ -1,13 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
 
-/* CSS Reset */
+/* ============================================
+   FONT DECLARATIONS
+   ============================================ */
+
+/* Custom Pokemon Font (optional - add pokemon-font.ttf to assets/fonts/) */
+@font-face {
+  font-family: 'PokemonFont';
+  src: url('/assets/fonts/pokemon-font.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ============================================
+   CSS RESET
+   ============================================ */
+
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: grayscale;
+  font-smooth: never;
 }
 
-/* Retro Pokémon Color Palette (Game Boy aesthetic) */
+/* ============================================
+   COLOR PALETTE
+   ============================================ */
+
+/* Retro Pokémon Color Palette */
 :root {
   /* Game Boy Colors */
   --gb-dark: #0f380f;
@@ -15,14 +38,21 @@
   --gb-medium-light: #8bac0f;
   --gb-light: #9bbc0f;
   
-  /* Additional Pokémon-inspired colors */
-  --pokemon-red: #ff1111;
-  --pokemon-blue: #0000ff;
-  --pokemon-yellow: #ffde00;
+  /* Classic Pokemon Colors */
+  --pokemon-red: #F83038;
+  --pokemon-blue: #3850F8;
+  --pokemon-yellow: #F8D030;
+  --pokemon-green: #78C850;
   --pokemon-black: #000000;
-  --pokemon-white: #ffffff;
+  --pokemon-white: #FFFFFF;
   
-  /* UI Colors */
+  /* UI Colors - Text Boxes & Menus */
+  --pokemon-text-box-bg: #F8F8F8;
+  --pokemon-text-box-border: #000000;
+  --pokemon-menu-bg: #FFFFFF;
+  --pokemon-menu-border: #000000;
+  
+  /* Additional UI Colors */
   --ui-bg: #f8f8f0;
   --ui-border: #000000;
   --ui-shadow: rgba(0, 0, 0, 0.2);
@@ -33,22 +63,29 @@
   --text-secondary: #666666;
 }
 
-/* Global Styles */
+/* ============================================
+   GLOBAL FONT APPLICATION
+   ============================================ */
+
+/* Global Styles with Pokemon Font Priority */
 html, body {
   width: 100%;
   height: 100%;
-  font-family: 'Courier New', 'Press Start 2P', monospace, sans-serif;
+  font-family: 'PokemonFont', 'Press Start 2P', 'Courier New', monospace;
   line-height: 1.6;
   color: var(--text-primary);
   background: var(--ui-bg);
   -webkit-font-smoothing: none;
   -moz-osx-font-smoothing: grayscale;
+  font-smooth: never;
+  image-rendering: pixelated;
 }
 
 body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+  letter-spacing: 1px; /* Pixel fonts often need slight spacing adjustment */
 }
 
 /* Image Rendering for Pixel Art */
@@ -109,7 +146,65 @@ button {
   }
 }
 
-/* Utility Classes */
+/* ============================================
+   FONT SIZE UTILITIES
+   ============================================ */
+
+.text-small {
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+.text-medium {
+  font-size: 16px;
+  line-height: 1.3;
+}
+
+.text-large {
+  font-size: 24px;
+  line-height: 1.3;
+}
+
+.text-battle-menu {
+  font-size: 18px;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+/* ============================================
+   RETRO TEXT STYLING
+   ============================================ */
+
+.pokemon-text {
+  font-family: 'PokemonFont', 'Press Start 2P', 'Courier New', monospace;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--pokemon-black);
+  text-shadow: 2px 2px 0px var(--ui-shadow);
+}
+
+.dialog-text {
+  font-family: 'PokemonFont', 'Press Start 2P', 'Courier New', monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--pokemon-black);
+}
+
+/* ============================================
+   PIXEL PERFECT RENDERING
+   ============================================ */
+
+.pixel-perfect {
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: grayscale;
+  font-smooth: never;
+  image-rendering: pixelated;
+}
+
+/* ============================================
+   GENERAL UTILITY CLASSES
+   ============================================ */
+
 .pixelated {
   image-rendering: pixelated;
 }
