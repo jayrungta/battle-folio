@@ -9,24 +9,20 @@
   <div class="battle-arena">
     <!-- Opponent Section (Top) -->
     <div class="opponent-section">
-      <div class="opponent-pokemon-status">
-        <div class="pokemon-count">
-          <div class="pokeball-icon" *ngFor="let i of [1,2,3,4,5,6]"></div>
+      <div class="hp-box">
+        <div class="hp-box-content">
+          <div class="trainer-name-hp">{{ trainerName }}</div>
+          <div class="hp-bar-container">
+            <div class="hp-label">HP</div>
+            <div class="hp-bar">
+              <div class="hp-fill"></div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="opponent-trainer" 
            [class.animate-entrance]="animationState === 'challenge' || animationState === 'ready'">
         <img [src]="trainerSprite" alt="Trainer" class="trainer-sprite">
-        <div class="trainer-name">{{ trainerName }}</div>
-      </div>
-    </div>
-
-    <!-- Player Section (Bottom) -->
-    <div class="player-section">
-      <div class="player-pokemon-status">
-        <div class="pokemon-count">
-          <div class="pokeball-icon" *ngFor="let i of [1,2,3,4,5,6]"></div>
-        </div>
       </div>
     </div>
   </div>

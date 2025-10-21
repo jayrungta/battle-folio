@@ -42,47 +42,53 @@
     .opponent-section {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 40px;
       align-self: flex-end;
 
-      .opponent-pokemon-status {
+      .hp-box {
         background: #fff;
         border: 3px solid #000;
-        padding: 8px 12px;
-        border-radius: 4px;
+        padding: 14px 20px;
+        border-radius: 8px;
+        min-width: 240px;
 
-        .pokemon-count {
-          display: flex;
-          gap: 6px;
+        .hp-box-content {
+          .trainer-name-hp {
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #000;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+          }
 
-          .pokeball-icon {
-            width: 16px;
-            height: 16px;
-            border: 2px solid #000;
-            border-radius: 50%;
-            background: #ff6b6b;
-            position: relative;
+          .hp-bar-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
 
-            &::before {
-              content: '';
-              position: absolute;
-              top: 50%;
-              left: 0;
-              right: 0;
-              height: 2px;
-              background: #000;
-              transform: translateY(-50%);
+            .hp-label {
+              font-family: 'Courier New', monospace;
+              font-size: 14px;
+              font-weight: bold;
+              color: #000;
             }
 
-            &::after {
-              content: '';
-              position: absolute;
-              top: 0;
-              left: 50%;
-              width: 2px;
-              height: 100%;
-              background: #000;
-              transform: translateX(-50%);
+            .hp-bar {
+              flex: 1;
+              height: 10px;
+              background: #ddd;
+              border: 2px solid #000;
+              border-radius: 2px;
+              overflow: hidden;
+
+              .hp-fill {
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(to right, #78c850, #48d058);
+                transition: width 0.3s ease;
+              }
             }
           }
         }
@@ -103,11 +109,11 @@
         &::before {
           content: '';
           position: absolute;
-          bottom: 15px;
+          bottom: 0px;
           left: 50%;
           transform: translateX(-50%);
           width: 240px;
-          height: 80px;
+          height: 70px;
           background: radial-gradient(ellipse at center, 
             rgba(255, 255, 255, 0.9) 0%, 
             rgba(220, 220, 220, 0.7) 50%, 
@@ -120,7 +126,6 @@
         .trainer-sprite {
           width: 200px;
           height: 200px;
-          margin-bottom: 10px;
           image-rendering: pixelated;
           image-rendering: -moz-crisp-edges;
           image-rendering: crisp-edges;
@@ -129,72 +134,9 @@
           position: relative;
           z-index: 1;
         }
-
-        .trainer-name {
-          font-size: 14px;
-          font-weight: bold;
-          text-transform: uppercase;
-          color: #000;
-          background: #fff;
-          padding: 4px 8px;
-          border: 2px solid #000;
-          display: inline-block;
-          position: relative;
-          z-index: 1;
-        }
       }
     }
 
-    // Player Section (Bottom - Horizontal Row)
-    .player-section {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      align-self: flex-start;
-
-      .player-pokemon-status {
-        background: #fff;
-        border: 3px solid #000;
-        padding: 8px 12px;
-        border-radius: 4px;
-
-        .pokemon-count {
-          display: flex;
-          gap: 6px;
-
-          .pokeball-icon {
-            width: 16px;
-            height: 16px;
-            border: 2px solid #000;
-            border-radius: 50%;
-            background: #4ecdc4;
-            position: relative;
-
-            &::before {
-              content: '';
-              position: absolute;
-              top: 50%;
-              left: 0;
-              right: 0;
-              height: 2px;
-              background: #000;
-              transform: translateY(-50%);
-            }
-
-            &::after {
-              content: '';
-              position: absolute;
-              top: 0;
-              left: 50%;
-              width: 2px;
-              height: 100%;
-              background: #000;
-              transform: translateX(-50%);
-            }
-          }
-        }
-      }
-    }
   }
 
   // Battle Message Box (Bottom 30% of screen) - Split 50/50
