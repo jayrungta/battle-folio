@@ -343,53 +343,53 @@
 }
 
 // ============================================
-// ACCESSIBILITY - REDUCED MOTION
-// Make animations instantaneous
-// ============================================
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01s !important;
-    animation-iteration-count: 1 !important;
-  }
-
-  .battle-screen {
-    animation: none !important;
-    clip-path: none !important;
-    opacity: 1 !important;
-
-    .trainer-area .trainer-sprite {
-      animation: none !important;
-      opacity: 1 !important;
-      transform: none !important;
-    }
-
-    .battle-interface {
-      animation: none !important;
-      opacity: 1 !important;
-      transform: none !important;
-    }
-  }
-
-  .white-flash {
-    display: none !important;
-  }
-}
-
-// ============================================
 // RESPONSIVE MOBILE STYLES
 // ============================================
 @media (max-width: 768px) {
   .battle-screen {
-    .trainer-area {
-      padding: 20px;
+    .battle-message-box {
+      .left-section {
+        // Show challenge text, take full space
+        flex: 1;
 
-      .trainer-sprite {
-        .placeholder-sprite {
-          font-size: 80px;
+        .battle-challenge {
+          .message-text {
+            font-size: 20px;
+          }
+        }
+      }
+
+      .right-section {
+        // Hide menu section when challenge is showing
+        display: none;
+      }
+
+      // When ready state, hide challenge and show menu
+      &:has(.battle-menu-container) {
+        .left-section {
+          display: none;
         }
 
-        .trainer-name {
-          font-size: 18px;
+        .right-section {
+          display: flex;
+          flex: 1;
+          border-left: 0;
+        }
+      }
+    }
+
+    .battle-arena {
+      padding: 20px;
+
+      .opponent-trainer {
+        .trainer-sprite {
+          width: 120px;
+          height: 120px;
+        }
+
+        &::before {
+          width: 150px;
+          height: 50px;
         }
       }
     }
