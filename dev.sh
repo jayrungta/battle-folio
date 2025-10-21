@@ -11,20 +11,13 @@ BLUE='\033[0;34m'
 YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
-PROJECT_DIR="pokemon-portfolio"
-
 echo -e "${BLUE}🎮 Pokémon Portfolio - Helper Script${NC}"
 echo ""
 
 # Check if we're in the right directory
 if [ ! -f "package.json" ]; then
-    if [ -d "$PROJECT_DIR" ]; then
-        echo -e "${YELLOW}📁 Navigating to project directory...${NC}"
-        cd $PROJECT_DIR
-    else
-        echo -e "${YELLOW}❌ Error: Not in project directory${NC}"
-        exit 1
-    fi
+    echo -e "${YELLOW}❌ Error: Not in project directory${NC}"
+    exit 1
 fi
 
 # Display menu
@@ -55,7 +48,7 @@ case $choice in
     3)
         echo -e "${BLUE}🏗️  Building for production...${NC}"
         npm run build
-        echo -e "${GREEN}✅ Build complete! Output in dist/pokemon-portfolio/${NC}"
+        echo -e "${GREEN}✅ Build complete! Check dist/ directory${NC}"
         ;;
     4)
         echo -e "${BLUE}🧪 Running tests...${NC}"
