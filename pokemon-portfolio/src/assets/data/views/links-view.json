@@ -1,0 +1,22 @@
+{
+  "viewType": "dialog-box",
+  "title": "Connect with me!",
+  "items": [
+    {
+      "label": "GitHub",
+      "value": "github.com/yourhandle"
+    },
+    {
+      "label": "LinkedIn",
+      "value": "linkedin.com/in/yourprofile"
+    },
+    {
+      "label": "Twitter",
+      "value": "@yourhandle"
+    },
+    {
+      "label": "Personal Website",
+      "value": "yourwebsite.com"
+    }
+  ]
+}

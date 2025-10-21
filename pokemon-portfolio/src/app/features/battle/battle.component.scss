@@ -1,0 +1,72 @@
+.battle-screen {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #87ceeb 0%, #f0e68c 100%);
+
+  .trainer-area {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+
+    .trainer-sprite {
+      text-align: center;
+
+      .placeholder-sprite {
+        font-size: 120px;
+        margin-bottom: 20px;
+        filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
+      }
+
+      .trainer-name {
+        font-size: 24px;
+        font-weight: bold;
+        text-transform: uppercase;
+        background: #f8f8f0;
+        padding: 8px 16px;
+        border: 2px solid #000;
+        display: inline-block;
+      }
+    }
+  }
+
+  .battle-interface {
+    background: #fff;
+    border-top: 4px solid #000;
+
+    .dialog-area {
+      padding: 20px;
+      background: #f8f8f0;
+      border-bottom: 4px solid #000;
+
+      .dialog-text {
+        font-size: 18px;
+        font-weight: bold;
+      }
+    }
+
+    .menu-area {
+      padding: 20px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .battle-screen {
+    .trainer-area {
+      padding: 20px;
+
+      .trainer-sprite {
+        .placeholder-sprite {
+          font-size: 80px;
+        }
+
+        .trainer-name {
+          font-size: 18px;
+        }
+      }
+    }
+  }
+}

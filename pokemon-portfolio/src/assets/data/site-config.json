@@ -1,0 +1,32 @@
+{
+  "battleOptions": [
+    {
+      "id": "work",
+      "label": "WORK",
+      "route": "/work",
+      "component": "pokemon-picker",
+      "configFile": "views/work-view.json"
+    },
+    {
+      "id": "projects",
+      "label": "PROJECTS",
+      "route": "/projects",
+      "component": "item-bag",
+      "configFile": "views/projects-view.json"
+    },
+    {
+      "id": "links",
+      "label": "LINKS",
+      "route": "/links",
+      "component": "dialog-box",
+      "configFile": "views/links-view.json"
+    },
+    {
+      "id": "contact",
+      "label": "CONTACT",
+      "route": "/contact",
+      "component": "dialog-box",
+      "configFile": "views/contact-view.json"
+    }
+  ]
+}

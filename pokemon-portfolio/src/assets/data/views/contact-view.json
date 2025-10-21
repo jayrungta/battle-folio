@@ -1,0 +1,19 @@
+{
+  "viewType": "dialog-box",
+  "title": "Get in touch!",
+  "content": "Feel free to reach out to me through any of the following channels. I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.",
+  "items": [
+    {
+      "label": "Email",
+      "value": "your.email@example.com"
+    },
+    {
+      "label": "Location",
+      "value": "Your City, Your Country"
+    },
+    {
+      "label": "Availability",
+      "value": "Open to opportunities"
+    }
+  ]
+}

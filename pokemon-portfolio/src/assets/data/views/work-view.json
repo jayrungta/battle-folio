@@ -1,0 +1,42 @@
+{
+  "viewType": "pokemon-picker",
+  "title": "Choose a Company",
+  "items": [
+    {
+      "id": "company1",
+      "name": "Tech Corp",
+      "sprite": "assets/sprites/company-icon.png",
+      "level": "Senior Engineer",
+      "type": "Tech",
+      "description": "Led development of scalable web applications using Angular and TypeScript",
+      "stats": {
+        "years": "2020-2023",
+        "skills": ["Angular", "TypeScript", "RxJS", "SCSS"]
+      }
+    },
+    {
+      "id": "company2",
+      "name": "StartupXYZ",
+      "sprite": "assets/sprites/company-icon.png",
+      "level": "Full Stack Developer",
+      "type": "Startup",
+      "description": "Built and maintained full-stack applications with modern frameworks",
+      "stats": {
+        "years": "2018-2020",
+        "skills": ["React", "Node.js", "MongoDB", "AWS"]
+      }
+    },
+    {
+      "id": "company3",
+      "name": "Web Solutions",
+      "sprite": "assets/sprites/company-icon.png",
+      "level": "Junior Developer",
+      "type": "Agency",
+      "description": "Developed client websites and web applications",
+      "stats": {
+        "years": "2016-2018",
+        "skills": ["HTML", "CSS", "JavaScript", "jQuery"]
+      }
+    }
+  ]
+}

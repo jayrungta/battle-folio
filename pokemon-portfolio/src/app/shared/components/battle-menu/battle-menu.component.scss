@@ -1,0 +1,30 @@
+.battle-menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 20px;
+  background: #f8f8f0;
+  border: 4px solid #000;
+
+  .menu-option {
+    flex: 1 1 calc(50% - 8px);
+    min-width: 150px;
+    padding: 16px;
+    background: #fff;
+    border: 2px solid #000;
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover {
+      background: #ffe4b5;
+      transform: scale(1.05);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+}
