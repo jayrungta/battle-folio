@@ -173,6 +173,13 @@
           color: #fff;
           margin-bottom: 12px;
 
+          .position-prefix {
+            font-size: 12px;
+            font-weight: bold;
+            color: #000;
+            margin-right: 4px;
+          }
+
           // Mobile responsive
           @media (max-width: 480px) {
             font-size: 12px;
@@ -180,20 +187,48 @@
           }
         }
 
-        .years-label {
-          display: inline-block;
-          font-size: 12px;
-          font-weight: bold;
-          color: #000;
-          margin-right: 4px;
-        }
+        .years-section {
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
 
-        .years {
-          display: inline-block;
-          font-size: 16px;
-          font-weight: bold;
-          color: #fff;
-          text-shadow: 1px 1px 0 #000;
+          .years-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            .years-label {
+              font-size: 14px;
+              font-weight: 900;
+              color: #f0d030;
+              text-shadow: 2px 2px 0 #000;
+              flex-shrink: 0;
+            }
+
+            .hp-bar {
+              flex: 1;
+              height: 10px;
+              background: #000;
+              border: 2px solid #000;
+              border-radius: 2px;
+              position: relative;
+
+              .hp-fill {
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, #58d058 0%, #68e068 100%);
+                border-radius: 1px;
+              }
+            }
+          }
+
+          .years-value {
+            font-size: 12px;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 1px 1px 0 #000;
+            text-align: center;
+          }
         }
       }
     }
@@ -329,6 +364,13 @@
           color: #fff;
           margin-bottom: 4px;
 
+          .position-prefix {
+            font-size: 11px;
+            font-weight: bold;
+            color: #000;
+            margin-right: 4px;
+          }
+
           // Mobile responsive
           @media (max-width: 480px) {
             font-size: 10px;
@@ -336,18 +378,46 @@
         }
 
         .item-years {
-          .years-prefix {
-            font-size: 11px;
-            font-weight: bold;
-            color: #000;
-            margin-right: 4px;
+          display: flex;
+          flex-direction: column;
+          gap: 2px;
+
+          .years-row {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+
+            .years-label {
+              font-size: 12px;
+              font-weight: 900;
+              color: #f0d030;
+              text-shadow: 2px 2px 0 #000;
+              flex-shrink: 0;
+            }
+
+            .hp-bar {
+              flex: 1;
+              height: 10px;
+              background: #000;
+              border: 2px solid #000;
+              border-radius: 1px;
+              position: relative;
+
+              .hp-fill {
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, #58d058 0%, #68e068 100%);
+                border-radius: 1px;
+              }
+            }
           }
 
-          span:last-child {
-            font-size: 13px;
+          .years-value {
+            font-size: 11px;
             font-weight: bold;
             color: #fff;
             text-shadow: 1px 1px 0 #000;
+            text-align: center;
           }
 
           &.empty-placeholder {

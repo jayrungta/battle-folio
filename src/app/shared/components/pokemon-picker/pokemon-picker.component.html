@@ -3,7 +3,7 @@
   <div class="party-layout">
     <!-- First item - Featured on left -->
     <div class="featured-pokemon">
-      <div class="featured-card" [class.empty-slot]="!items[0]">
+      <div class="featured-card" [class.empty-slot]="!items[0]" (click)="onCompanyClick(items[0])">
         <div class="featured-sprite">
           <img *ngIf="items[0]?.sprite" [src]="items[0].sprite" [alt]="items[0].name" />
           <div *ngIf="!items[0]" class="empty-sprite-placeholder"></div>
@@ -11,16 +11,26 @@
         <div class="featured-info">
           <div class="company-name" *ngIf="items[0]">{{ items[0].name }}</div>
           <div class="company-name empty-placeholder" *ngIf="!items[0]"></div>
-          <div class="position" *ngIf="items[0]?.level">{{ items[0].level }}</div>
-          <div class="years-label" *ngIf="items[0]">Yrs</div>
-          <div class="years" *ngIf="items[0]?.stats?.years">{{ items[0].stats.years }}</div>
+          <div class="position" *ngIf="items[0]?.level">
+            <span class="position-prefix">Lv</span>
+            <span>{{ items[0].level }}</span>
+          </div>
+          <div class="years-section" *ngIf="items[0]">
+            <div class="years-row">
+              <div class="years-label">Yrs</div>
+              <div class="hp-bar">
+                <div class="hp-fill"></div>
+              </div>
+            </div>
+            <div class="years-value">{{ items[0].stats?.years }}</div>
+          </div>
         </div>
       </div>
     </div>
 
     <!-- Remaining items - Stacked on right (5 slots) -->
     <div class="party-list">
-      <div *ngFor="let item of getPartySlots(); let i = index" class="party-item" [class.empty-slot]="!item">
+      <div *ngFor="let item of getPartySlots(); let i = index" class="party-item" [class.empty-slot]="!item" (click)="onCompanyClick(item)">
         <div class="item-sprite">
           <img *ngIf="item?.sprite" [src]="item.sprite" [alt]="item.name" />
           <div *ngIf="!item" class="empty-sprite-placeholder"></div>
@@ -28,14 +38,29 @@
         <div class="item-info">
           <div class="item-name" *ngIf="item">{{ item.name }}</div>
           <div class="item-name empty-placeholder" *ngIf="!item"></div>
-          <div class="item-position" *ngIf="item?.level">{{ item.level }}</div>
+          <div class="item-position" *ngIf="item?.level">
+            <span class="position-prefix">Lv</span>
+            <span>{{ item.level }}</span>
+          </div>
           <div class="item-years" *ngIf="item">
-            <span class="years-prefix">Yrs</span>
-            <span *ngIf="item.stats?.years">{{ item.stats.years }}</span>
+            <div class="years-row">
+              <div class="years-label">Yrs</div>
+              <div class="hp-bar">
+                <div class="hp-fill"></div>
+              </div>
+            </div>
+            <div class="years-value" *ngIf="item.stats?.years">{{ item.stats.years }}</div>
           </div>
           <div class="item-years empty-placeholder" *ngIf="!item"></div>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- Company Details Modal -->
+  <app-company-details 
+    *ngIf="showDetails" 
+    [company]="selectedCompany" 
+    (close)="onCloseDetails()">
+  </app-company-details>
 </div>

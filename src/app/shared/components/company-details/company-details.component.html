@@ -1,0 +1,62 @@
+<div class="company-details" *ngIf="company">
+  <!-- Header Bar -->
+  <div class="header-bar">
+    <div class="header-left">
+      <span class="header-text">COMPANY INFO</span>
+    </div>
+    <div class="header-right">
+      <span class="cancel-button" (click)="onClose()">CANCEL</span>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="details-layout">
+    <!-- Left Panel - Company Identification -->
+    <div class="left-panel">
+      <div class="company-number">
+        <span class="number-label">No</span>
+        <span class="number-value">{{ company.id?.replace('company', '') || '001' }}</span>
+      </div>
+      
+      <div class="company-sprite">
+        <img *ngIf="company.sprite" [src]="company.sprite" [alt]="company.name" />
+      </div>
+      
+      <div class="company-name">{{ company.name }}</div>
+      
+      <div class="company-level">
+        <span class="level-label">LEVEL/</span>
+        <span class="level-value">{{ company.level || 'Senior' }}</span>
+      </div>
+      
+      <div class="company-duration">
+        <span class="duration-label">DURATION/</span>
+        <span class="duration-value">{{ company.stats?.years }}</span>
+      </div>
+    </div>
+
+    <!-- Right Panel - Detailed Information -->
+    <div class="right-panel">
+      <div class="panel-header">PROFILE</div>
+      
+      <div class="info-section">
+        <div class="info-item">
+          <span class="info-label">TYPE/</span>
+          <span class="type-badge">{{ company.type }}</span>
+        </div>
+        
+        <div class="info-item">
+          <span class="info-label">SKILLS</span>
+          <div class="skills-list">
+            <span *ngFor="let skill of company.stats?.skills" class="skill-tag">{{ skill }}</span>
+          </div>
+        </div>
+        
+        <div class="info-item">
+          <span class="info-label">DESCRIPTION</span>
+          <div class="description-text">{{ company.description }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
