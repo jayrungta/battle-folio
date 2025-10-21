@@ -1,0 +1,30 @@
+{
+  "viewType": "item-bag",
+  "title": "Projects Bag",
+  "items": [
+    {
+      "id": "project1",
+      "name": "E-Commerce Platform",
+      "icon": "assets/sprites/project-icon.png",
+      "description": "A full-featured e-commerce platform with cart, checkout, and payment integration"
+    },
+    {
+      "id": "project2",
+      "name": "Task Management App",
+      "icon": "assets/sprites/project-icon.png",
+      "description": "Real-time collaborative task management application with drag-and-drop interface"
+    },
+    {
+      "id": "project3",
+      "name": "Weather Dashboard",
+      "icon": "assets/sprites/project-icon.png",
+      "description": "Interactive weather dashboard with data visualization and forecasts"
+    },
+    {
+      "id": "project4",
+      "name": "Portfolio Website",
+      "icon": "assets/sprites/project-icon.png",
+      "description": "Retro Pokémon-style portfolio website with data-driven architecture"
+    }
+  ]
+}

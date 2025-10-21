@@ -1,0 +1,36 @@
+<div class="dynamic-view">
+  <div class="back-button" (click)="goBack()">
+    ← Back
+  </div>
+
+  <div *ngIf="isLoading" class="loading">
+    Loading...
+  </div>
+
+  <div *ngIf="!isLoading && viewConfig">
+    <div [ngSwitch]="componentType">
+      <app-pokemon-picker
+        *ngSwitchCase="'pokemon-picker'"
+        [items]="viewConfig.items"
+        [title]="viewConfig.title">
+      </app-pokemon-picker>
+
+      <app-item-bag
+        *ngSwitchCase="'item-bag'"
+        [items]="viewConfig.items"
+        [title]="viewConfig.title">
+      </app-item-bag>
+
+      <app-dialog-box
+        *ngSwitchCase="'dialog-box'"
+        [items]="viewConfig.items"
+        [title]="viewConfig.title"
+        [content]="viewConfig['content']">
+      </app-dialog-box>
+
+      <div *ngSwitchDefault class="error">
+        Unknown component type: {{ componentType }}
+      </div>
+    </div>
+  </div>
+</div>

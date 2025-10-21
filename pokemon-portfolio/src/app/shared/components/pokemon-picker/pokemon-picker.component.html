@@ -1,0 +1,15 @@
+<div class="pokemon-picker">
+  <div class="title">{{ title }}</div>
+  <div class="grid">
+    <div *ngFor="let item of items" class="pokemon-item">
+      <div class="sprite-container">
+        <img *ngIf="item.sprite" [src]="item.sprite" [alt]="item.name" />
+      </div>
+      <div class="info">
+        <div class="name">{{ item.name }}</div>
+        <div class="level" *ngIf="item.level">{{ item.level }}</div>
+        <div class="type" *ngIf="item.type">{{ item.type }}</div>
+      </div>
+    </div>
+  </div>
+</div>

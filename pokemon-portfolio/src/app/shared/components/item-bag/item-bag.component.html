@@ -1,0 +1,14 @@
+<div class="item-bag">
+  <div class="title">{{ title }}</div>
+  <div class="bag-container">
+    <div *ngFor="let item of items" class="item">
+      <div class="icon" *ngIf="item.icon">
+        <img [src]="item.icon" [alt]="item.name" />
+      </div>
+      <div class="details">
+        <div class="name">{{ item.name }}</div>
+        <div class="description" *ngIf="item.description">{{ item.description }}</div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,137 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* CSS Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Retro Pokémon Color Palette (Game Boy aesthetic) */
+:root {
+  /* Game Boy Colors */
+  --gb-dark: #0f380f;
+  --gb-medium-dark: #306230;
+  --gb-medium-light: #8bac0f;
+  --gb-light: #9bbc0f;
+  
+  /* Additional Pokémon-inspired colors */
+  --pokemon-red: #ff1111;
+  --pokemon-blue: #0000ff;
+  --pokemon-yellow: #ffde00;
+  --pokemon-black: #000000;
+  --pokemon-white: #ffffff;
+  
+  /* UI Colors */
+  --ui-bg: #f8f8f0;
+  --ui-border: #000000;
+  --ui-shadow: rgba(0, 0, 0, 0.2);
+  --ui-highlight: #ffe4b5;
+  
+  /* Text Colors */
+  --text-primary: #000000;
+  --text-secondary: #666666;
+}
+
+/* Global Styles */
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: 'Courier New', 'Press Start 2P', monospace, sans-serif;
+  line-height: 1.6;
+  color: var(--text-primary);
+  background: var(--ui-bg);
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Image Rendering for Pixel Art */
+img {
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -webkit-crisp-edges;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+/* Links */
+a {
+  color: var(--pokemon-blue);
+  text-decoration: none;
+  
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+/* Button Reset */
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* Selection */
+::selection {
+  background: var(--pokemon-yellow);
+  color: var(--pokemon-black);
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--ui-bg);
+  border: 2px solid var(--ui-border);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gb-medium-dark);
+  border: 2px solid var(--ui-border);
+  
+  &:hover {
+    background: var(--gb-dark);
+  }
+}
+
+/* Utility Classes */
+.pixelated {
+  image-rendering: pixelated;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+/* Responsive Typography */
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 12px;
+  }
+}
+
