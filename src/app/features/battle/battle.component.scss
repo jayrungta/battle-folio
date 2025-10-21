@@ -296,7 +296,7 @@
 
         .battle-challenge {
           .message-text {
-            font-size: 20px;
+            font-size: 18px;
           }
         }
       }
@@ -321,17 +321,94 @@
     }
 
     .battle-arena {
-      padding: 20px;
+      padding: 15px;
 
-      .opponent-trainer {
-        .trainer-sprite {
-          width: 120px;
-          height: 120px;
+      .opponent-section {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        .hp-box {
+          min-width: 160px;
+          padding: 8px 12px;
+
+          .hp-box-content {
+            .trainer-name-hp {
+              font-size: 13px;
+            }
+
+            .hp-bar-container {
+              gap: 5px;
+
+              .hp-label {
+                font-size: 11px;
+              }
+
+              .hp-bar {
+                height: 7px;
+              }
+            }
+          }
         }
 
-        &::before {
-          width: 150px;
-          height: 50px;
+        .opponent-trainer {
+          .trainer-sprite {
+            width: 160px;
+            height: 160px;
+          }
+
+          &::before {
+            width: 200px;
+            height: 70px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Extra small devices (phones, less than 400px)
+@media (max-width: 400px) {
+  .battle-screen {
+    .battle-arena {
+      padding: 10px;
+
+      .opponent-section {
+        gap: 10px;
+
+        .hp-box {
+          min-width: 140px;
+          padding: 6px 10px;
+
+          .hp-box-content {
+            .trainer-name-hp {
+              font-size: 11px;
+            }
+
+            .hp-bar-container {
+              gap: 4px;
+
+              .hp-label {
+                font-size: 9px;
+              }
+
+              .hp-bar {
+                height: 6px;
+              }
+            }
+          }
+        }
+
+        .opponent-trainer {
+          .trainer-sprite {
+            width: 130px;
+            height: 130px;
+          }
+
+          &::before {
+            width: 170px;
+            height: 60px;
+          }
         }
       }
     }
