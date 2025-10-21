@@ -9,7 +9,6 @@ A modern Angular single-page application with a retro Pokémon Game Boy aestheti
 ## 🚀 Quick Start
 
 ```bash
-cd pokemon-portfolio
 npm install
 ng serve
 ```
@@ -33,7 +32,6 @@ Then open **http://localhost:4200** in your browser!
 ### 📁 Project Structure
 
 ```
-pokemon-portfolio/
 ├── src/
 │   ├── app/
 │   │   ├── core/
@@ -204,7 +202,7 @@ Hot reload: ENABLED
 ```bash
 npm run build
 ```
-Output: `dist/pokemon-portfolio/`
+Output: `dist/` directory
 
 ### Deploy To
 - **Netlify** - Drag and drop the dist folder

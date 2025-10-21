@@ -2,22 +2,17 @@
 
 ## 🚀 Running the Application
 
-1. **Navigate to the project:**
-   ```bash
-   cd pokemon-portfolio
-   ```
-
-2. **Install dependencies** (if not already done):
+1. **Install dependencies** (if not already done):
    ```bash
    npm install
    ```
 
-3. **Start the development server:**
+2. **Start the development server:**
    ```bash
    ng serve
    ```
 
-4. **Open in browser:**
+3. **Open in browser:**
    Navigate to `http://localhost:4200`
 
 ## 📁 Project Overview
@@ -203,13 +198,13 @@ Edit `src/assets/data/site-config.json`:
 npm run build
 ```
 
-Output will be in `dist/pokemon-portfolio/` - ready to deploy!
+Output will be in the `dist/` directory - ready to deploy!
 
 ## 📦 Deployment Options
 
 ### Static Hosting (Netlify, Vercel, GitHub Pages)
 1. Build: `npm run build`
-2. Upload the `dist/pokemon-portfolio/` folder
+2. Upload the `dist/` folder
 3. Configure for SPA (single page app) routing
 
 ### Docker
