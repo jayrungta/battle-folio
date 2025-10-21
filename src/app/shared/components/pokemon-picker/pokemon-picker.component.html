@@ -1,14 +1,40 @@
 <div class="pokemon-picker">
   <div class="title">{{ title }}</div>
-  <div class="grid">
-    <div *ngFor="let item of items" class="pokemon-item">
-      <div class="sprite-container">
-        <img *ngIf="item.sprite" [src]="item.sprite" [alt]="item.name" />
+  <div class="party-layout">
+    <!-- First item - Featured on left -->
+    <div class="featured-pokemon">
+      <div class="featured-card" [class.empty-slot]="!items[0]">
+        <div class="featured-sprite">
+          <img *ngIf="items[0]?.sprite" [src]="items[0].sprite" [alt]="items[0].name" />
+          <div *ngIf="!items[0]" class="empty-sprite-placeholder"></div>
+        </div>
+        <div class="featured-info">
+          <div class="company-name" *ngIf="items[0]">{{ items[0].name }}</div>
+          <div class="company-name empty-placeholder" *ngIf="!items[0]"></div>
+          <div class="position" *ngIf="items[0]?.level">{{ items[0].level }}</div>
+          <div class="years-label" *ngIf="items[0]">Yrs</div>
+          <div class="years" *ngIf="items[0]?.stats?.years">{{ items[0].stats.years }}</div>
+        </div>
       </div>
-      <div class="info">
-        <div class="name">{{ item.name }}</div>
-        <div class="level" *ngIf="item.level">{{ item.level }}</div>
-        <div class="type" *ngIf="item.type">{{ item.type }}</div>
+    </div>
+
+    <!-- Remaining items - Stacked on right (5 slots) -->
+    <div class="party-list">
+      <div *ngFor="let item of getPartySlots(); let i = index" class="party-item" [class.empty-slot]="!item">
+        <div class="item-sprite">
+          <img *ngIf="item?.sprite" [src]="item.sprite" [alt]="item.name" />
+          <div *ngIf="!item" class="empty-sprite-placeholder"></div>
+        </div>
+        <div class="item-info">
+          <div class="item-name" *ngIf="item">{{ item.name }}</div>
+          <div class="item-name empty-placeholder" *ngIf="!item"></div>
+          <div class="item-position" *ngIf="item?.level">{{ item.level }}</div>
+          <div class="item-years" *ngIf="item">
+            <span class="years-prefix">Yrs</span>
+            <span *ngIf="item.stats?.years">{{ item.stats.years }}</span>
+          </div>
+          <div class="item-years empty-placeholder" *ngIf="!item"></div>
+        </div>
       </div>
     </div>
   </div>

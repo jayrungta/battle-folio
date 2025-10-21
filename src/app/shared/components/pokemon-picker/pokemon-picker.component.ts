@@ -11,4 +11,13 @@ import { CommonModule } from '@angular/common';
 export class PokemonPickerComponent {
   @Input() items: any[] = [];
   @Input() title: string = '';
+
+  getPartySlots(): any[] {
+    // Return 5 slots for the right side (items 1-5, with null for empty slots)
+    const partySlots = [];
+    for (let i = 1; i <= 5; i++) {
+      partySlots.push(this.items[i] || null);
+    }
+    return partySlots;
+  }
 }
