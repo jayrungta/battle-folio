@@ -4,27 +4,14 @@
   "items": [
     {
       "id": "project1",
-      "name": "E-Commerce Platform",
-      "icon": "assets/sprites/project-icon.png",
-      "description": "A full-featured e-commerce platform with cart, checkout, and payment integration"
+      "name": "Divy - Expense Management App",
+      "description": "A mobile app that allows you to split expenses with friends. All the functionality from leading expense split apps, but for free. Coming soon to the App and Play Store."
     },
     {
       "id": "project2",
-      "name": "Task Management App",
-      "icon": "assets/sprites/project-icon.png",
-      "description": "Real-time collaborative task management application with drag-and-drop interface"
-    },
-    {
-      "id": "project3",
-      "name": "Weather Dashboard",
-      "icon": "assets/sprites/project-icon.png",
-      "description": "Interactive weather dashboard with data visualization and forecasts"
-    },
-    {
-      "id": "project4",
-      "name": "Portfolio Website",
-      "icon": "assets/sprites/project-icon.png",
-      "description": "Retro Pokémon-style portfolio website with data-driven architecture"
+      "name": "Battle Folio - My Portfolio Website",
+      "githubUrl": "https://github.com/jayrungta/battle-folio",
+      "description": "Retro Pokémon-style portfolio website with data-driven architecture."
     }
   ]
 }

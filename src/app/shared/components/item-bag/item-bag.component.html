@@ -25,10 +25,15 @@
   <!-- Bottom Panel - Description -->
   <div class="description-panel" *ngIf="selectedProject">
     <div class="description-content">
-      <div class="project-icon" *ngIf="selectedProject.icon">
-        <img [src]="selectedProject.icon" [alt]="selectedProject.name" />
+      <div class="description-text">
+        {{ selectedProject.description }}
+        <div class="github-link" *ngIf="selectedProject.githubUrl">
+          <a [href]="selectedProject.githubUrl" target="_blank" class="external-link">
+            <span class="link-text">View on GitHub</span>
+            <span class="external-icon">↗</span>
+          </a>
+        </div>
       </div>
-      <div class="description-text">{{ selectedProject.description }}</div>
     </div>
   </div>
 </div>
