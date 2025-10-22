@@ -1,7 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import emailjs from '@emailjs/browser';
+import { ConfigService } from '../../../core/services';
+import { SiteConfig } from '../../../core/models';
 
 @Component({
   selector: 'app-contact-form',
@@ -10,20 +12,19 @@ import emailjs from '@emailjs/browser';
   templateUrl: './contact-form.component.html',
   styleUrls: ['./contact-form.component.scss']
 })
-export class ContactFormComponent {
+export class ContactFormComponent implements OnInit {
   @Input() content: string = '';
   
   contactForm: FormGroup;
   isSubmitting = false;
   submitStatus: 'idle' | 'success' | 'error' = 'idle';
   errorMessage = '';
+  emailConfig: any = null;
 
-  // EmailJS Configuration - Replace these with your actual values
-  private readonly EMAILJS_SERVICE_ID = 'service_chm96zo';
-  private readonly EMAILJS_TEMPLATE_ID = 'template_dujfx1o';
-  private readonly EMAILJS_PUBLIC_KEY = '995FCEYqCg0kJSsQm';
-
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private configService: ConfigService
+  ) {
     this.contactForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Validators.required, Validators.email]],
@@ -31,9 +32,26 @@ export class ContactFormComponent {
     });
   }
 
+  ngOnInit(): void {
+    this.configService.getSiteConfig().subscribe({
+      next: (siteConfig: SiteConfig) => {
+        this.emailConfig = siteConfig.emailConfig;
+      },
+      error: (error) => {
+        console.error('Error loading email config:', error);
+      }
+    });
+  }
+
   async onSubmit(): Promise<void> {
     if (this.contactForm.invalid) {
       this.markFormGroupTouched(this.contactForm);
+      return;
+    }
+
+    if (!this.emailConfig) {
+      this.submitStatus = 'error';
+      this.errorMessage = 'Email configuration not loaded. Please try again.';
       return;
     }
 
@@ -52,10 +70,10 @@ export class ContactFormComponent {
       };
 
       await emailjs.send(
-        this.EMAILJS_SERVICE_ID,
-        this.EMAILJS_TEMPLATE_ID,
+        this.emailConfig.serviceId,
+        this.emailConfig.templateId,
         templateParams,
-        this.EMAILJS_PUBLIC_KEY
+        this.emailConfig.publicKey
       );
 
       this.submitStatus = 'success';

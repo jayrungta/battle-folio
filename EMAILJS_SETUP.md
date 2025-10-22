@@ -36,17 +36,23 @@ Message:
 2. Copy your **Public Key** (under API Keys section)
 
 ## Step 5: Update Your Code
-Open: `src/app/shared/components/contact-form/contact-form.component.ts`
+Open: `src/assets/data/site-config.json`
 
-Replace these values (around line 23-25):
-```typescript
-private readonly EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID';     // From Step 2
-private readonly EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';   // From Step 3
-private readonly EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY';     // From Step 4
+Update the emailConfig section:
+```json
+{
+  "trainerName": "JAY RUNGTA",
+  "emailConfig": {
+    "serviceId": "YOUR_SERVICE_ID",     // From Step 2
+    "templateId": "YOUR_TEMPLATE_ID",   // From Step 3
+    "publicKey": "YOUR_PUBLIC_KEY"      // From Step 4
+  },
+  "battleOptions": [...]
+}
 ```
 
 ## Step 6: Update Recipient Name (Optional)
-In the same file, update the recipient name (line 46):
+In `src/app/shared/components/contact-form/contact-form.component.ts`, update the recipient name (around line 69):
 ```typescript
 to_name: 'Jay', // Change this to your preferred name
 ```

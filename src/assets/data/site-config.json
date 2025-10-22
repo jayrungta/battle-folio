@@ -29,5 +29,10 @@
       "component": "contact-form",
       "configFile": "views/contact-view.json"
     }
-  ]
+  ],
+  "emailConfig": {
+    "serviceId": "service_chm96zo",
+    "templateId": "template_dujfx1o",
+    "publicKey": "995FCEYqCg0kJSsQm"
+  }
 }
