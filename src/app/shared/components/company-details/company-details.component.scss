@@ -54,6 +54,8 @@
     flex: 1;
     gap: 20px;
     padding: 20px;
+    overflow-y: auto;
+    overflow-x: hidden;
 
     @include mobile-tablet {
       flex-direction: column;

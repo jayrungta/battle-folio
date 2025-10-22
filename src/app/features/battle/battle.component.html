@@ -2,7 +2,7 @@
 <div class="white-flash" *ngIf="showWhiteFlash"></div>
 
 <div class="battle-screen" 
-     [class.transition]="animationState === 'transition'" 
+     [class.transition]="shouldAnimate && animationState === 'transition'" 
      [class.ready]="animationState === 'ready'">
   
   <!-- Battle Arena (Top Section) -->
@@ -21,7 +21,7 @@
         </div>
       </div>
       <div class="opponent-trainer" 
-           [class.animate-entrance]="animationState === 'challenge' || animationState === 'ready'">
+           [class.animate-entrance]="shouldAnimate && (animationState === 'challenge' || animationState === 'ready')">
         <img [src]="trainerSprite" alt="Trainer" class="trainer-sprite">
       </div>
     </div>
@@ -29,7 +29,7 @@
 
   <!-- Battle Message Box (Bottom Section) -->
   <div class="battle-message-box" 
-       [class.animate-entrance]="animationState === 'transition' || animationState === 'challenge' || animationState === 'ready'">
+       [class.animate-entrance]="shouldAnimate && (animationState === 'transition' || animationState === 'challenge' || animationState === 'ready')">
     
     <!-- Left Half: Message or Empty Space -->
     <div class="left-section">
@@ -51,11 +51,11 @@
     <div class="right-section">
       <div class="battle-menu-container" 
            *ngIf="animationState === 'ready'"
-           [class.animate-entrance]="animationState === 'ready'">
+           [class.animate-entrance]="shouldAnimate && animationState === 'ready'">
         <app-battle-menu 
           [options]="battleOptions" 
           [disabled]="animationState !== 'ready'"
-          [animateEntrance]="animationState === 'ready'">
+          [animateEntrance]="shouldAnimate && animationState === 'ready'">
         </app-battle-menu>
       </div>
     </div>
