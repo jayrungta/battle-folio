@@ -1,10 +1,12 @@
+@use '../../styles/mixins' as *;
+
 .company-details {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: #88a868; // Gen 3 party screen green
+  background: var(--party-screen-bg);
   z-index: 1000;
   display: flex;
   flex-direction: column;
@@ -14,7 +16,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient(90deg, #58b8d0 0%, #58b8d0 60%, #a8a8a8 60%, #a8a8a8 100%);
+    background: linear-gradient(90deg, var(--pokemon-card-bg) 0%, var(--pokemon-card-bg) 60%, var(--empty-slot-bg) 60%, var(--empty-slot-bg) 100%);
     border-bottom: 4px solid #000;
     padding: 12px 20px;
     min-height: 50px;
@@ -23,9 +25,7 @@
       .header-text {
         font-size: 18px;
         font-weight: bold;
-        color: #fff;
-        text-shadow: 2px 2px 0 #000;
-        text-transform: uppercase;
+        @include pokemon-text-shadow;
       }
     }
 
@@ -33,9 +33,7 @@
       .cancel-button {
         font-size: 16px;
         font-weight: bold;
-        color: #fff;
-        text-shadow: 2px 2px 0 #000;
-        text-transform: uppercase;
+        @include pokemon-text-shadow;
         cursor: pointer;
         padding: 8px 16px;
         background: #d03030;
@@ -57,8 +55,7 @@
     gap: 20px;
     padding: 20px;
 
-    // Mobile responsive
-    @media (max-width: 768px) {
+    @include mobile-tablet {
       flex-direction: column;
       gap: 16px;
       padding: 16px;
@@ -68,19 +65,15 @@
   // Left Panel - Company Identification
   .left-panel {
     flex: 0 0 40%;
-    background: #a8d8a8; // Light green like Pokemon info
-    border: 4px solid #000;
-    padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 16px;
+    @include info-panel;
 
-    // Mobile responsive
-    @media (max-width: 768px) {
+    @include mobile-tablet {
       flex: none;
       width: 100%;
-      padding: 16px;
     }
 
     .company-number {
@@ -89,15 +82,14 @@
       gap: 8px;
       font-size: 16px;
       font-weight: bold;
-      color: #fff;
-      text-shadow: 2px 2px 0 #000;
+      @include pokemon-text-shadow;
 
       .number-label {
         color: #fff;
       }
 
       .number-value {
-        color: #58b8d0;
+        color: var(--pokemon-card-bg);
         background: #000;
         padding: 4px 8px;
         border-radius: 4px;
@@ -106,24 +98,18 @@
 
     .company-sprite {
       img {
-        width: 160px;
-        height: 160px;
-        image-rendering: pixelated;
-        object-fit: contain;
+        @include pixelated-image(160px, 160px);
         background: rgba(255, 255, 255, 0.3);
         padding: 16px;
         border-radius: 8px;
         border: 2px solid rgba(0, 0, 0, 0.2);
 
-        // Mobile responsive
-        @media (max-width: 768px) {
-          width: 120px;
-          height: 120px;
+        @include mobile-tablet {
+          @include pixelated-image(120px, 120px);
         }
 
-        @media (max-width: 480px) {
-          width: 100px;
-          height: 100px;
+        @include mobile {
+          @include pixelated-image(100px, 100px);
         }
       }
     }
@@ -131,13 +117,10 @@
     .company-name {
       font-size: 24px;
       font-weight: bold;
-      color: #fff;
-      text-shadow: 2px 2px 0 #000;
-      text-transform: uppercase;
+      @include pokemon-text-shadow;
       text-align: center;
 
-      // Mobile responsive
-      @media (max-width: 480px) {
+      @include mobile {
         font-size: 20px;
       }
     }
@@ -149,51 +132,26 @@
       text-transform: uppercase;
       text-align: center;
 
-      // Mobile responsive
-      @media (max-width: 480px) {
+      @include mobile {
         font-size: 16px;
       }
     }
 
-    .company-level {
+    .company-level, .company-duration {
       display: flex;
       align-items: center;
       gap: 8px;
       font-size: 14px;
       font-weight: bold;
-      color: #fff;
-      text-shadow: 2px 2px 0 #000;
+      @include pokemon-text-shadow;
 
-      .level-label {
+      .level-label, .duration-label {
         color: #fff;
         text-transform: uppercase;
       }
 
-      .level-value {
-        color: #58b8d0;
-        background: #000;
-        padding: 2px 6px;
-        border-radius: 4px;
-        font-size: 12px;
-      }
-    }
-
-    .company-duration {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 14px;
-      font-weight: bold;
-      color: #fff;
-      text-shadow: 2px 2px 0 #000;
-
-      .duration-label {
-        color: #fff;
-        text-transform: uppercase;
-      }
-
-      .duration-value {
-        color: #58b8d0;
+      .level-value, .duration-value {
+        color: var(--pokemon-card-bg);
         background: #000;
         padding: 2px 6px;
         border-radius: 4px;
@@ -205,19 +163,18 @@
   // Right Panel - Detailed Information
   .right-panel {
     flex: 1;
-    background: #a8d8a8; // Light green like Pokemon info
-    border: 4px solid #000;
+    padding: 0;
     display: flex;
     flex-direction: column;
+    @include info-panel;
 
-    // Mobile responsive
-    @media (max-width: 768px) {
+    @include mobile-tablet {
       flex: none;
       width: 100%;
     }
 
     .panel-header {
-      background: #a8a8a8; // Purple header like Pokemon info
+      background: var(--empty-slot-bg);
       color: #fff;
       font-size: 16px;
       font-weight: bold;
@@ -249,7 +206,7 @@
 
         .info-value {
           font-size: 16px;
-          color: #58b8d0;
+          color: var(--pokemon-card-bg);
           font-weight: bold;
           text-shadow: 1px 1px 0 #000;
         }
@@ -274,7 +231,7 @@
           margin-top: 4px;
 
           .skill-tag {
-            background: #58b8d0;
+            background: var(--pokemon-card-bg);
             color: #000;
             padding: 4px 8px;
             border: 2px solid #000;

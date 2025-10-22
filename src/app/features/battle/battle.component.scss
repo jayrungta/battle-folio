@@ -1,3 +1,5 @@
+@use '../../shared/styles/mixins' as *;
+
 // ============================================
 // AUTHENTIC POKÉMON GEN 1/2 BATTLE LAYOUT
 // Based on Game Boy Red/Blue/Yellow screens
@@ -16,11 +18,10 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background: white; // Clean white background like Game Boy
+  background: white;
   position: relative;
-  font-family: 'Courier New', monospace; // Pixelated font
+  font-family: 'Courier New', monospace;
   
-  // Spiral wipe transition (Gen 1/2 iconic effect)
   &.transition {
     animation: spiralWipe 0.5s steps(10) forwards;
   }
@@ -31,12 +32,17 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background: linear-gradient(to bottom, 
-      #b8d8e8 0%, 
-      #d8e8f0 50%, 
-      #f0f8ff 100%);
+    background: linear-gradient(to bottom, #b8d8e8 0%, #d8e8f0 50%, #f0f8ff 100%);
     padding: 40px;
     position: relative;
+
+    @include mobile-tablet {
+      padding: 15px;
+    }
+
+    @include mobile {
+      padding: 10px;
+    }
 
     // Opponent Section (Top - Horizontal Row)
     .opponent-section {
@@ -45,12 +51,32 @@
       gap: 40px;
       align-self: flex-end;
 
+      @include mobile-tablet {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      @include mobile {
+        gap: 10px;
+      }
+
       .hp-box {
         background: #fff;
         border: 3px solid #000;
         padding: 14px 20px;
         border-radius: 8px;
         min-width: 240px;
+
+        @include mobile-tablet {
+          min-width: 160px;
+          padding: 8px 12px;
+        }
+
+        @include mobile {
+          min-width: 140px;
+          padding: 6px 10px;
+        }
 
         .hp-box-content {
           .trainer-name-hp {
@@ -61,6 +87,9 @@
             color: #000;
             margin-bottom: 8px;
             letter-spacing: 1px;
+
+            @include mobile-tablet { font-size: 13px; }
+            @include mobile { font-size: 11px; }
           }
 
           .hp-bar-container {
@@ -68,11 +97,17 @@
             align-items: center;
             gap: 10px;
 
+            @include mobile-tablet { gap: 5px; }
+            @include mobile { gap: 4px; }
+
             .hp-label {
               font-family: 'Courier New', monospace;
               font-size: 14px;
               font-weight: bold;
               color: #000;
+
+              @include mobile-tablet { font-size: 11px; }
+              @include mobile { font-size: 9px; }
             }
 
             .hp-bar {
@@ -82,6 +117,9 @@
               border: 2px solid #000;
               border-radius: 2px;
               overflow: hidden;
+
+              @include mobile-tablet { height: 7px; }
+              @include mobile { height: 6px; }
 
               .hp-fill {
                 width: 100%;
@@ -105,7 +143,7 @@
             trainerShake 0.3s steps(6) 0.6s;
         }
 
-        // Platform/placemat under trainer
+        // Platform under trainer
         &::before {
           content: '';
           position: absolute;
@@ -121,25 +159,37 @@
           border-radius: 50%;
           z-index: -1;
           box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+
+          @include mobile-tablet {
+            width: 200px;
+            height: 70px;
+          }
+
+          @include mobile {
+            width: 170px;
+            height: 60px;
+          }
         }
 
         .trainer-sprite {
-          width: 200px;
-          height: 200px;
-          image-rendering: pixelated;
-          image-rendering: -moz-crisp-edges;
-          image-rendering: crisp-edges;
+          @include pixelated-image(200px, 200px);
           display: block;
-          object-fit: contain;
           position: relative;
           z-index: 1;
+
+          @include mobile-tablet {
+            @include pixelated-image(160px, 160px);
+          }
+
+          @include mobile {
+            @include pixelated-image(130px, 130px);
+          }
         }
       }
     }
-
   }
 
-  // Battle Message Box (Bottom 30% of screen) - Split 50/50
+  // Battle Message Box (Bottom 30% of screen)
   .battle-message-box {
     flex: 3;
     background: #fff;
@@ -152,7 +202,7 @@
       animation: interfacePopIn 0.01s step-end 0.6s forwards;
     }
 
-    // Left Section - Takes full width when challenge is shown, 50% when menu is shown
+    // Left Section
     .left-section {
       flex: 1;
       display: flex;
@@ -174,6 +224,10 @@
           color: #000;
           text-align: center;
           line-height: 1.2;
+
+          @include mobile-tablet {
+            font-size: 18px;
+          }
         }
 
         .message-arrow {
@@ -187,7 +241,7 @@
       }
     }
 
-    // Right Section - Only visible when menu is ready
+    // Right Section
     .right-section {
       flex: 0;
       display: flex;
@@ -207,11 +261,29 @@
         }
       }
 
-      // When menu container is present, expand to 50%
       &:has(.battle-menu-container) {
         flex: 1;
         padding: 8px;
         border-left: 4px solid #000;
+      }
+    }
+
+    // Mobile layout
+    @include mobile-tablet {
+      .right-section {
+        display: none;
+      }
+
+      &:has(.battle-menu-container) {
+        .left-section {
+          display: none;
+        }
+
+        .right-section {
+          display: flex;
+          flex: 1;
+          border-left: 0;
+        }
       }
     }
   }
@@ -219,16 +291,13 @@
 
 // ============================================
 // KEYFRAME ANIMATIONS - GEN 1/2 STYLE
-// All use steps() for choppy retro feel
 // ============================================
 
-// White flash at battle start
 @keyframes flash {
   0% { opacity: 1; }
   100% { opacity: 0; }
 }
 
-// Spiral wipe transition (circular expansion with steps)
 @keyframes spiralWipe {
   0% { 
     clip-path: circle(0% at 50% 50%);
@@ -240,13 +309,11 @@
   }
 }
 
-// Trainer instant pop-in (0 to 1 in single frame)
 @keyframes trainerPopIn {
   0% { opacity: 0; }
   100% { opacity: 1; }
 }
 
-// Trainer shake effect (4-6 rapid shakes)
 @keyframes trainerShake {
   0%, 100% { transform: translateX(0); }
   16.6% { transform: translateX(-3px); }
@@ -256,13 +323,11 @@
   83.3% { transform: translateX(-2px); }
 }
 
-// Interface instant pop-in
 @keyframes interfacePopIn {
   0% { opacity: 0; }
   100% { opacity: 1; }
 }
 
-// Menu pop-in with scale bounce
 @keyframes menuPopIn {
   0% { 
     opacity: 0;
@@ -278,139 +343,7 @@
   }
 }
 
-// Blinking arrow for message
 @keyframes blink {
   0%, 50% { opacity: 1; }
   51%, 100% { opacity: 0; }
-}
-
-// ============================================
-// RESPONSIVE MOBILE STYLES
-// ============================================
-@media (max-width: 768px) {
-  .battle-screen {
-    .battle-message-box {
-      .left-section {
-        // Show challenge text, take full space
-        flex: 1;
-
-        .battle-challenge {
-          .message-text {
-            font-size: 18px;
-          }
-        }
-      }
-
-      .right-section {
-        // Hide menu section when challenge is showing
-        display: none;
-      }
-
-      // When ready state, hide challenge and show menu
-      &:has(.battle-menu-container) {
-        .left-section {
-          display: none;
-        }
-
-        .right-section {
-          display: flex;
-          flex: 1;
-          border-left: 0;
-        }
-      }
-    }
-
-    .battle-arena {
-      padding: 15px;
-
-      .opponent-section {
-        gap: 15px;
-        flex-wrap: wrap;
-        justify-content: center;
-
-        .hp-box {
-          min-width: 160px;
-          padding: 8px 12px;
-
-          .hp-box-content {
-            .trainer-name-hp {
-              font-size: 13px;
-            }
-
-            .hp-bar-container {
-              gap: 5px;
-
-              .hp-label {
-                font-size: 11px;
-              }
-
-              .hp-bar {
-                height: 7px;
-              }
-            }
-          }
-        }
-
-        .opponent-trainer {
-          .trainer-sprite {
-            width: 160px;
-            height: 160px;
-          }
-
-          &::before {
-            width: 200px;
-            height: 70px;
-          }
-        }
-      }
-    }
-  }
-}
-
-// Extra small devices (phones, less than 400px)
-@media (max-width: 400px) {
-  .battle-screen {
-    .battle-arena {
-      padding: 10px;
-
-      .opponent-section {
-        gap: 10px;
-
-        .hp-box {
-          min-width: 140px;
-          padding: 6px 10px;
-
-          .hp-box-content {
-            .trainer-name-hp {
-              font-size: 11px;
-            }
-
-            .hp-bar-container {
-              gap: 4px;
-
-              .hp-label {
-                font-size: 9px;
-              }
-
-              .hp-bar {
-                height: 6px;
-              }
-            }
-          }
-        }
-
-        .opponent-trainer {
-          .trainer-sprite {
-            width: 130px;
-            height: 130px;
-          }
-
-          &::before {
-            width: 170px;
-            height: 60px;
-          }
-        }
-      }
-    }
-  }
 }

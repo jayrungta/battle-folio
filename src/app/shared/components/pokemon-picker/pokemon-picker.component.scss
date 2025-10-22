@@ -1,16 +1,17 @@
+@use '../../styles/mixins' as *;
+
 .pokemon-picker {
   padding: 20px;
-  background: #88a868; // Gen 3 party screen green
+  background: var(--party-screen-bg);
   border: 4px solid #000;
   min-height: 400px;
 
-  // Mobile responsive
-  @media (max-width: 768px) {
+  @include mobile-tablet {
     padding: 16px;
     min-height: 300px;
   }
 
-  @media (max-width: 480px) {
+  @include mobile {
     padding: 12px;
     min-height: 250px;
   }
@@ -19,17 +20,14 @@
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 16px;
-    text-transform: uppercase;
-    color: #fff;
-    text-shadow: 2px 2px 0 #000;
+    @include pokemon-text-shadow;
 
-    // Mobile responsive
-    @media (max-width: 768px) {
+    @include mobile-tablet {
       font-size: 18px;
       margin-bottom: 12px;
     }
 
-    @media (max-width: 480px) {
+    @include mobile {
       font-size: 16px;
       margin-bottom: 10px;
     }
@@ -40,79 +38,54 @@
     gap: 20px;
     align-items: flex-start;
 
-    // Mobile responsive layout
-    @media (max-width: 768px) {
+    @include mobile-tablet {
       flex-direction: column;
       gap: 16px;
     }
   }
 
-  // Featured Pokemon - Left Side (First Item)
+  // Featured Pokemon - Left Side
   .featured-pokemon {
     flex: 0 0 40%;
     
-    // Mobile responsive
-    @media (max-width: 768px) {
+    @include mobile-tablet {
       flex: none;
       width: 100%;
     }
     
     .featured-card {
-      background: #58b8d0; // Light blue like Gen 3 selected Pokemon
-      border: 4px solid #000;
+      @include pokemon-card;
       padding: 20px;
-      box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.3);
       display: flex;
       align-items: center;
       gap: 20px;
-      cursor: pointer;
-      transition: transform 0.1s, background 0.1s;
 
-      // Mobile responsive
-      @media (max-width: 768px) {
+      @include mobile-tablet {
         padding: 16px;
         gap: 16px;
       }
 
-      @media (max-width: 480px) {
+      @include mobile {
         padding: 12px;
         gap: 12px;
       }
       
       &.empty-slot {
-        background: #a8a8a8; // Gray for empty slots
-        opacity: 0.7;
-        cursor: default;
-
-        &:hover {
-          background: #a8a8a8;
-          transform: none;
-        }
-      }
-
-      &:hover:not(.empty-slot) {
-        background: #68c8e0;
-        transform: translateX(4px);
+        @include empty-slot;
       }
       
       .featured-sprite {
         flex-shrink: 0;
         
         img {
-          width: 120px;
-          height: 120px;
-          image-rendering: pixelated;
-          object-fit: contain;
+          @include pixelated-image(120px, 120px);
 
-          // Mobile responsive
-          @media (max-width: 768px) {
-            width: 100px;
-            height: 100px;
+          @include mobile-tablet {
+            @include pixelated-image(100px, 100px);
           }
 
-          @media (max-width: 480px) {
-            width: 80px;
-            height: 80px;
+          @include mobile {
+            @include pixelated-image(80px, 80px);
           }
         }
 
@@ -121,13 +94,12 @@
           height: 120px;
           background: transparent;
 
-          // Mobile responsive
-          @media (max-width: 768px) {
+          @include mobile-tablet {
             width: 100px;
             height: 100px;
           }
 
-          @media (max-width: 480px) {
+          @include mobile {
             width: 80px;
             height: 80px;
           }
@@ -140,31 +112,23 @@
         .company-name {
           font-size: 24px;
           font-weight: bold;
-          text-transform: uppercase;
-          color: #fff;
-          text-shadow: 2px 2px 0 #000;
+          @include pokemon-text-shadow;
           margin-bottom: 8px;
 
-          // Mobile responsive
-          @media (max-width: 768px) {
+          @include mobile-tablet {
             font-size: 20px;
           }
 
-          @media (max-width: 480px) {
+          @include mobile {
             font-size: 18px;
           }
 
           &.empty-placeholder {
-            height: 30px; // Same height as the text
+            height: 30px;
             margin-bottom: 8px;
 
-            @media (max-width: 768px) {
-              height: 26px;
-            }
-
-            @media (max-width: 480px) {
-              height: 24px;
-            }
+            @include mobile-tablet { height: 26px; }
+            @include mobile { height: 24px; }
           }
         }
 
@@ -180,8 +144,7 @@
             margin-right: 4px;
           }
 
-          // Mobile responsive
-          @media (max-width: 480px) {
+          @include mobile {
             font-size: 12px;
             margin-bottom: 8px;
           }
@@ -200,25 +163,14 @@
             .years-label {
               font-size: 14px;
               font-weight: 900;
-              color: #f0d030;
+              color: var(--years-label);
               text-shadow: 2px 2px 0 #000;
               flex-shrink: 0;
             }
 
             .hp-bar {
               flex: 1;
-              height: 10px;
-              background: #000;
-              border: 2px solid #000;
-              border-radius: 2px;
-              position: relative;
-
-              .hp-fill {
-                width: 100%;
-                height: 100%;
-                background: linear-gradient(90deg, #58d058 0%, #68e068 100%);
-                border-radius: 1px;
-              }
+              @include hp-bar;
             }
           }
 
@@ -234,76 +186,54 @@
     }
   }
 
-  // Party List - Right Side (Remaining Items)
+  // Party List - Right Side
   .party-list {
     flex: 1;
     display: flex;
     flex-direction: column;
     gap: 8px;
 
-    // Mobile responsive
-    @media (max-width: 768px) {
+    @include mobile-tablet {
       flex: none;
       width: 100%;
       gap: 6px;
     }
 
     .party-item {
-      background: #58b8d0; // Light blue like Gen 3
+      @include pokemon-card;
       border: 3px solid #000;
       padding: 12px 16px;
       display: flex;
       align-items: center;
       gap: 16px;
-      cursor: pointer;
-      transition: transform 0.1s, background 0.1s;
       box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
 
-      // Mobile responsive
-      @media (max-width: 768px) {
+      @include mobile-tablet {
         padding: 10px 12px;
         gap: 12px;
       }
 
-      @media (max-width: 480px) {
+      @include mobile {
         padding: 8px 10px;
         gap: 10px;
       }
 
       &.empty-slot {
-        background: #a8a8a8; // Gray for empty slots
-        opacity: 0.7;
-        cursor: default;
-
-        &:hover {
-          background: #a8a8a8;
-          transform: none;
-        }
-      }
-
-      &:hover:not(.empty-slot) {
-        background: #68c8e0;
-        transform: translateX(4px);
+        @include empty-slot;
       }
 
       .item-sprite {
         flex-shrink: 0;
         
         img {
-          width: 80px;
-          height: 80px;
-          image-rendering: pixelated;
-          object-fit: contain;
+          @include pixelated-image(80px, 80px);
 
-          // Mobile responsive
-          @media (max-width: 768px) {
-            width: 60px;
-            height: 60px;
+          @include mobile-tablet {
+            @include pixelated-image(60px, 60px);
           }
 
-          @media (max-width: 480px) {
-            width: 50px;
-            height: 50px;
+          @include mobile {
+            @include pixelated-image(50px, 50px);
           }
         }
 
@@ -312,13 +242,12 @@
           height: 80px;
           background: transparent;
 
-          // Mobile responsive
-          @media (max-width: 768px) {
+          @include mobile-tablet {
             width: 60px;
             height: 60px;
           }
 
-          @media (max-width: 480px) {
+          @include mobile {
             width: 50px;
             height: 50px;
           }
@@ -336,26 +265,20 @@
           text-shadow: 1px 1px 0 #000;
           margin-bottom: 4px;
 
-          // Mobile responsive
-          @media (max-width: 768px) {
+          @include mobile-tablet {
             font-size: 16px;
           }
 
-          @media (max-width: 480px) {
+          @include mobile {
             font-size: 14px;
           }
 
           &.empty-placeholder {
-            height: 22px; // Same height as the text
+            height: 22px;
             margin-bottom: 4px;
 
-            @media (max-width: 768px) {
-              height: 20px;
-            }
-
-            @media (max-width: 480px) {
-              height: 18px;
-            }
+            @include mobile-tablet { height: 20px; }
+            @include mobile { height: 18px; }
           }
         }
 
@@ -371,8 +294,7 @@
             margin-right: 4px;
           }
 
-          // Mobile responsive
-          @media (max-width: 480px) {
+          @include mobile {
             font-size: 10px;
           }
         }
@@ -390,25 +312,14 @@
             .years-label {
               font-size: 12px;
               font-weight: 900;
-              color: #f0d030;
+              color: var(--years-label);
               text-shadow: 2px 2px 0 #000;
               flex-shrink: 0;
             }
 
             .hp-bar {
               flex: 1;
-              height: 10px;
-              background: #000;
-              border: 2px solid #000;
-              border-radius: 1px;
-              position: relative;
-
-              .hp-fill {
-                width: 100%;
-                height: 100%;
-                background: linear-gradient(90deg, #58d058 0%, #68e068 100%);
-                border-radius: 1px;
-              }
+              @include hp-bar;
             }
           }
 
@@ -421,7 +332,7 @@
           }
 
           &.empty-placeholder {
-            height: 15px; // Same height as the years text
+            height: 15px;
           }
         }
       }
