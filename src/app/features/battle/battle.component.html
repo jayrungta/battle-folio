@@ -39,6 +39,12 @@
         <div class="message-text">{{ trainerName }} wants to battle!</div>
         <div class="message-arrow">▼</div>
       </div>
+      
+      <!-- "What will you do?" Message - Only show when menu is ready -->
+      <div class="battle-prompt" 
+           *ngIf="animationState === 'ready'">
+        <div class="prompt-text">What will you do?</div>
+      </div>
     </div>
 
     <!-- Right Half: Battle Menu -->
