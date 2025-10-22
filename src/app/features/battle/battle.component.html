@@ -1,7 +1,10 @@
-<!-- White flash effect -->
-<div class="white-flash" *ngIf="showWhiteFlash"></div>
+<!-- Loading overlay with retro boot sequence -->
+<div class="loading-overlay" *ngIf="animationState === 'loading'" [class.flashing]="showFlashes">
+  <div class="scanlines"></div>
+</div>
 
 <div class="battle-screen" 
+     *ngIf="animationState !== 'loading'"
      [class.transition]="shouldAnimate && animationState === 'transition'" 
      [class.ready]="animationState === 'ready'">
   

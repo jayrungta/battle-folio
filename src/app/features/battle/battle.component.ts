@@ -18,20 +18,21 @@ export class BattleComponent implements OnInit, AfterViewInit {
   siteConfig: SiteConfig | null = null;
   battleOptions: BattleOption[] = [];
   animationState: AnimationState = 'loading';
-  showWhiteFlash: boolean = false;
+  showFlashes: boolean = false;
   trainerSprite: string = 'assets/images/trainers/trainer-sprite.png';
   trainerName: string = '';
   shouldAnimate: boolean = false;
   private static hasPlayedIntro: boolean = false;
 
-  // Animation timing constants - Gen 1/2 style (FAST and SNAPPY)
+  // Animation timing constants - Enhanced retro boot sequence
   private readonly ANIMATION_TIMINGS = {
-    whiteFlash: 100,        // 0.1s flash
-    spiralWipe: 500,        // 0.5s spiral transition
+    loadingScreen: 800,     // 0.8s black loading screen with text
+    flashSequence: 400,     // 0.4s for multiple flashes
+    spiralWipe: 600,        // 0.6s dramatic spiral transition
     trainerShake: 300,      // 0.3s shake effect
     challengeDisplay: 2000, // 2s to show "wants to battle" message
     menuPopIn: 200,         // 0.2s instant pop
-    totalDuration: 3000     // 3s total (challenge + menu)
+    totalDuration: 4200     // ~4.2s total boot sequence
   };
 
   constructor(
@@ -65,32 +66,32 @@ export class BattleComponent implements OnInit, AfterViewInit {
     BattleComponent.hasPlayedIntro = true;
     this.shouldAnimate = true;
 
-    // White flash at start
+    // Start retro boot sequence
+    this.playRetroBootSequence();
+  }
+
+  private playRetroBootSequence(): void {
+    // Show loading screen with flashing effect (0-400ms)
     setTimeout(() => {
-      this.showWhiteFlash = true;
+      this.showFlashes = true;
     }, 50);
 
-    // Remove flash quickly
-    setTimeout(() => {
-      this.showWhiteFlash = false;
-    }, 150);
-
-    // Start battle transition
+    // Start dramatic spiral wipe transition (500ms)
     setTimeout(() => {
       this.animationState = 'transition';
       this.playBattleStartSound();
-    }, 100);
+    }, 500);
 
-    // Show challenge message
+    // Show challenge message (1100ms)
     setTimeout(() => {
       this.animationState = 'challenge';
-    }, 600);
+    }, 1100);
 
     // Show battle menu after challenge
     setTimeout(() => {
       this.animationState = 'ready';
       this.playMenuAppearSound();
-    }, this.ANIMATION_TIMINGS.challengeDisplay + 600);
+    }, this.ANIMATION_TIMINGS.challengeDisplay + 1100);
   }
 
   // Skip animation on any key press
@@ -99,7 +100,7 @@ export class BattleComponent implements OnInit, AfterViewInit {
   skipAnimation(event: Event): void {
     if (this.animationState !== 'ready') {
       this.animationState = 'ready';
-      this.showWhiteFlash = false;
+      this.showFlashes = false;
       this.playMenuAppearSound();
     }
   }
@@ -108,7 +109,6 @@ export class BattleComponent implements OnInit, AfterViewInit {
   private playBattleStartSound(): void {
     // Enable background music when battle starts
     this.audioService.enableAutoplay();
-    console.log('Battle start sound - background music enabled');
   }
 
   private playMenuAppearSound(): void {

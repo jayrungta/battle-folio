@@ -28,11 +28,11 @@ export class AudioService {
     this.audio.loop = true;
     this.audio.volume = 0.5;
     this.audio.preload = 'auto';
-    this.audio.autoplay = true; // Enable autoplay
 
     // Handle audio events
     this.audio.addEventListener('play', () => {
       this.updateState({ isPlaying: true });
+      console.log('🎵 Audio playing');
     });
 
     this.audio.addEventListener('pause', () => {
@@ -48,17 +48,24 @@ export class AudioService {
       this.updateState({ isPlaying: false });
     });
 
-    // Try to start playing immediately
-    this.attemptAutoplay();
+    // Simulate user interaction hack - create a fake click
+    this.simulateUserInteraction();
   }
 
-  private async attemptAutoplay(): Promise<void> {
-    try {
-      await this.audio?.play();
-    } catch (error) {
-      // Autoplay blocked by browser - this is normal behavior
-      // Audio will start on first user interaction
-    }
+  private simulateUserInteraction(): void {
+    // Try to trick the browser by simulating a user interaction
+    setTimeout(() => {
+      // Create and dispatch a synthetic click event
+      const clickEvent = new MouseEvent('click', {
+        view: window,
+        bubbles: true,
+        cancelable: true
+      });
+      document.body.dispatchEvent(clickEvent);
+      
+      // Try to play audio immediately after
+      this.play();
+    }, 100);
   }
 
   getAudioState(): Observable<AudioState> {
@@ -76,8 +83,7 @@ export class AudioService {
       await this.audio.play();
       this.updateState({ isPlaying: true });
     } catch (error) {
-      // Browser blocked autoplay - this is normal
-      // Audio will start on first user interaction
+      console.log('🎵 Autoplay blocked by browser');
     }
   }
 
@@ -128,7 +134,6 @@ export class AudioService {
   // Method to handle user interaction for autoplay
   enableAutoplay(): void {
     if (this.audio) {
-      // Always try to play and unmute on user interaction
       this.unmute();
       this.play();
     }
