@@ -31,6 +31,11 @@
         [content]="viewConfig['content']">
       </app-dialog-box>
 
+      <app-contact-form
+        *ngSwitchCase="'contact-form'"
+        [content]="viewConfig['content']">
+      </app-contact-form>
+
       <div *ngSwitchDefault class="error">
         Unknown component type: {{ componentType }}
       </div>

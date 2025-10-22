@@ -6,6 +6,7 @@ import { SiteConfig, ViewConfig } from '../../core/models';
 import { PokemonPickerComponent } from '../../shared/components/pokemon-picker/pokemon-picker.component';
 import { ItemBagComponent } from '../../shared/components/item-bag/item-bag.component';
 import { DialogBoxComponent } from '../../shared/components/dialog-box/dialog-box.component';
+import { ContactFormComponent } from '../../shared/components/contact-form/contact-form.component';
 
 @Component({
   selector: 'app-dynamic-view',
@@ -15,7 +16,8 @@ import { DialogBoxComponent } from '../../shared/components/dialog-box/dialog-bo
     RouterModule,
     PokemonPickerComponent,
     ItemBagComponent,
-    DialogBoxComponent
+    DialogBoxComponent,
+    ContactFormComponent
   ],
   templateUrl: './dynamic-view.component.html',
   styleUrls: ['./dynamic-view.component.scss']

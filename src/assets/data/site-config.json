@@ -26,7 +26,7 @@
       "id": "contact",
       "label": "CONTACT",
       "route": "/contact",
-      "component": "dialog-box",
+      "component": "contact-form",
       "configFile": "views/contact-view.json"
     }
   ]

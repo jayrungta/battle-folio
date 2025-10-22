@@ -1,0 +1,137 @@
+.contact-form {
+  background: #f8f8f0;
+  border: 4px solid #000;
+  padding: 20px;
+  min-height: 200px;
+  position: relative;
+
+  .content {
+    line-height: 1.6;
+    margin-bottom: 20px;
+    font-size: 14px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    label {
+      font-weight: bold;
+      font-size: 12px;
+      letter-spacing: 0.5px;
+    }
+
+    input,
+    textarea {
+      padding: 10px;
+      border: 3px solid #000;
+      background: #fff;
+      font-family: inherit;
+      font-size: 14px;
+      transition: all 0.2s;
+
+      &:focus {
+        outline: none;
+        border-color: #3b4cca;
+        box-shadow: 0 0 0 2px rgba(59, 76, 202, 0.2);
+      }
+
+      &.error {
+        border-color: #ff0000;
+        background: #fff5f5;
+      }
+
+      &:disabled {
+        background: #e0e0e0;
+        cursor: not-allowed;
+      }
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .error-message {
+      color: #ff0000;
+      font-size: 11px;
+      font-weight: bold;
+      margin-top: -2px;
+    }
+  }
+
+  .submit-button {
+    padding: 12px 24px;
+    background: #3b4cca;
+    color: #fff;
+    border: 3px solid #000;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 0.5px;
+    font-family: inherit;
+    box-shadow: 4px 4px 0 #000;
+
+    &:hover:not(:disabled) {
+      background: #ffcb05;
+      color: #000;
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0 #000;
+    }
+
+    &:active:not(:disabled) {
+      transform: translate(2px, 2px);
+      box-shadow: 2px 2px 0 #000;
+    }
+
+    &:disabled {
+      background: #888;
+      cursor: not-allowed;
+      opacity: 0.6;
+      box-shadow: 2px 2px 0 #000;
+    }
+  }
+
+  .status-message {
+    padding: 12px;
+    border: 2px solid;
+    font-weight: bold;
+    font-size: 13px;
+    margin-top: 4px;
+
+    &.success {
+      background: #d4edda;
+      color: #155724;
+      border-color: #28a745;
+    }
+
+    &.error {
+      background: #f8d7da;
+      color: #721c24;
+      border-color: #dc3545;
+    }
+  }
+
+  // Responsive adjustments
+  @media (max-width: 600px) {
+    padding: 16px;
+
+    .form-group {
+      gap: 4px;
+    }
+
+    input,
+    textarea {
+      font-size: 16px; // Prevent zoom on iOS
+    }
+  }
+}
+
