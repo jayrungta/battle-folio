@@ -77,4 +77,8 @@ export class DynamicViewComponent implements OnInit {
   goBack(): void {
     this.router.navigate(['/']);
   }
+
+  getHeaderTitle(): string {
+    return this.viewConfig?.title || 'MENU';
+  }
 }

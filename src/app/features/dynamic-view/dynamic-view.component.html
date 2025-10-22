@@ -1,6 +1,12 @@
 <div class="dynamic-view">
-  <div class="back-button" (click)="goBack()">
-    ← Back
+  <!-- Header Bar -->
+  <div class="header-bar">
+    <div class="header-left">
+      <span class="header-text">{{ getHeaderTitle() }}</span>
+    </div>
+    <div class="header-right">
+      <span class="cancel-button" (click)="goBack()">CANCEL</span>
+    </div>
   </div>
 
   <div *ngIf="isLoading" class="loading">
@@ -11,20 +17,17 @@
     <div [ngSwitch]="componentType">
       <app-pokemon-picker
         *ngSwitchCase="'pokemon-picker'"
-        [items]="viewConfig.items"
-        [title]="viewConfig.title">
+        [items]="viewConfig.items">
       </app-pokemon-picker>
 
       <app-item-bag
         *ngSwitchCase="'item-bag'"
-        [items]="viewConfig.items"
-        [title]="viewConfig.title">
+        [items]="viewConfig.items">
       </app-item-bag>
 
       <app-dialog-box
         *ngSwitchCase="'dialog-box'"
         [items]="viewConfig.items"
-        [title]="viewConfig.title"
         [content]="viewConfig['content']">
       </app-dialog-box>
 

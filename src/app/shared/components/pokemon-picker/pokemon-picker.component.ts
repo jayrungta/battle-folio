@@ -11,7 +11,6 @@ import { CompanyDetailsComponent } from '../company-details/company-details.comp
 })
 export class PokemonPickerComponent {
   @Input() items: any[] = [];
-  @Input() title: string = '';
   
   selectedCompany: any = null;
   showDetails = false;

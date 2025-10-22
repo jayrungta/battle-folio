@@ -11,5 +11,4 @@ import { CommonModule } from '@angular/common';
 export class DialogBoxComponent {
   @Input() content: string = '';
   @Input() items: any[] = [];
-  @Input() title: string = '';
 }

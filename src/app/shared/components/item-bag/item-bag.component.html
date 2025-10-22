@@ -1,14 +1,34 @@
 <div class="item-bag">
-  <div class="title">{{ title }}</div>
-  <div class="bag-container">
-    <div *ngFor="let item of items" class="item">
-      <div class="icon" *ngIf="item.icon">
-        <img [src]="item.icon" [alt]="item.name" />
+  <!-- Main Content Layout -->
+  <div class="main-layout">
+    <!-- Left Panel - Backpack Image -->
+    <div class="left-panel">
+      <div class="backpack-container">
+        <img src="assets/images/items/backpack.png" alt="Backpack" class="backpack-image" />
       </div>
-      <div class="details">
-        <div class="name">{{ item.name }}</div>
-        <div class="description" *ngIf="item.description">{{ item.description }}</div>
+    </div>
+
+    <!-- Right Panel - Project List -->
+    <div class="right-panel">
+      <div class="project-list">
+        <div 
+          *ngFor="let item of items; let i = index" 
+          class="project-item"
+          [class.selected]="selectedIndex === i"
+          (click)="selectProject(i)">
+          <span class="project-name">{{ item.name }}</span>
+        </div>
       </div>
+    </div>
+  </div>
+
+  <!-- Bottom Panel - Description -->
+  <div class="description-panel" *ngIf="selectedProject">
+    <div class="description-content">
+      <div class="project-icon" *ngIf="selectedProject.icon">
+        <img [src]="selectedProject.icon" [alt]="selectedProject.name" />
+      </div>
+      <div class="description-text">{{ selectedProject.description }}</div>
     </div>
   </div>
 </div>
