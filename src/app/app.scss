@@ -1,0 +1,131 @@
+// Audio Controls Styling
+.audio-controls {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(0, 0, 0, 0.9);
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 2px solid #000;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+
+  .mute-button {
+    background: #3b4cca;
+    color: #fff;
+    border: 2px solid #000;
+    border-radius: 4px;
+    padding: 4px 6px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.2s;
+    min-width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      background: #ffcb05;
+      color: #000;
+      transform: scale(1.05);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+
+    &.muted {
+      background: #ff6b6b;
+      color: #fff;
+    }
+  }
+
+  .volume-slider {
+    width: 60px;
+    height: 4px;
+    background: #333;
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+
+    &::-webkit-slider-thumb {
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      background: #3b4cca;
+      border: 2px solid #000;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    &::-webkit-slider-thumb:hover {
+      background: #ffcb05;
+      transform: scale(1.1);
+    }
+
+    &::-moz-range-thumb {
+      width: 16px;
+      height: 16px;
+      background: #3b4cca;
+      border: 2px solid #000;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    &::-moz-range-thumb:hover {
+      background: #ffcb05;
+      transform: scale(1.1);
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .audio-controls {
+    top: 5px;
+    left: 5px;
+    padding: 6px 8px;
+    gap: 6px;
+
+    .mute-button {
+      padding: 4px 6px;
+      font-size: 12px;
+      min-width: 28px;
+      height: 28px;
+    }
+
+    .volume-slider {
+      width: 60px;
+    }
+  }
+}
+
+// Hide controls on very small screens if needed
+@media (max-width: 480px) {
+  .audio-controls {
+    .volume-slider {
+      display: none;
+    }
+    
+    .mute-button {
+      display: none;
+    }
+  }
+}
+
+// Ensure controls don't interfere with battle interface
+@media (max-width: 1024px) {
+  .audio-controls {
+    top: 5px;
+    left: 5px;
+    padding: 4px 8px;
+    gap: 6px;
+  }
+}

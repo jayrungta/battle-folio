@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewInit, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { ConfigService } from '../../core/services';
+import { ConfigService, AudioService } from '../../core/services';
 import { SiteConfig, BattleOption } from '../../core/models';
 import { BattleMenuComponent } from '../../shared/components/battle-menu/battle-menu.component';
 
@@ -34,7 +34,10 @@ export class BattleComponent implements OnInit, AfterViewInit {
     totalDuration: 3000     // 3s total (challenge + menu)
   };
 
-  constructor(private configService: ConfigService) {}
+  constructor(
+    private configService: ConfigService,
+    private audioService: AudioService
+  ) {}
 
   ngOnInit(): void {
     this.configService.getSiteConfig().subscribe({
@@ -101,14 +104,15 @@ export class BattleComponent implements OnInit, AfterViewInit {
     }
   }
 
-  // Sound effect placeholders for future Phase 6 implementation
+  // Sound effects using AudioService
   private playBattleStartSound(): void {
-    // TODO: Implement in Phase 6
-    console.log('Battle start sound would play here');
+    // Enable background music when battle starts
+    this.audioService.enableAutoplay();
+    console.log('Battle start sound - background music enabled');
   }
 
   private playMenuAppearSound(): void {
-    // TODO: Implement in Phase 6
+    // Sound effect for menu appearance
     console.log('Menu appear sound would play here');
   }
 }
