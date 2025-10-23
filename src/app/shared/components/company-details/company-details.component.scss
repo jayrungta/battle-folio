@@ -182,11 +182,15 @@
       }
 
       .level-value, .duration-value {
-        color: var(--pokemon-card-bg);
-        background: #000;
-        padding: 2px 6px;
+        color: #000;
+        background: #a8a878;
+        padding: 4px 8px;
+        border: 2px solid #000;
         border-radius: 4px;
-        font-size: 12px;
+        font-size: 14px;
+        font-weight: bold;
+        text-transform: uppercase;
+        text-shadow: none;
       }
     }
   }
@@ -205,14 +209,15 @@
     }
 
     .panel-header {
-      background: var(--empty-slot-bg);
-      color: #fff;
+      background: #a8a878;
+      color: #000;
       font-size: 16px;
       font-weight: bold;
-      text-shadow: 2px 2px 0 #000;
+      text-shadow: 1px 1px 0 #fff;
       text-transform: uppercase;
       padding: 12px 16px;
-      border-bottom: 2px solid #000;
+      border: 2px solid #000;
+      border-bottom: 4px solid #000;
     }
 
     .info-section {
@@ -262,7 +267,7 @@
           margin-top: 4px;
 
           .skill-tag {
-            background: var(--pokemon-card-bg);
+            background: #f8d030;
             color: #000;
             padding: 4px 8px;
             border: 2px solid #000;
@@ -276,9 +281,13 @@
         .description-text {
           font-size: 14px;
           color: #000;
-          text-shadow: 1px 1px 0 #fff;
+          background: var(--pokemon-card-bg);
+          padding: 8px 12px;
+          border: 2px solid #000;
+          border-radius: 4px;
           line-height: 1.4;
           margin-top: 4px;
+          text-shadow: none;
         }
       }
     }

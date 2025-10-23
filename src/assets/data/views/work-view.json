@@ -8,10 +8,10 @@
       "sprite": "assets/images/companies/google.png",
       "level": "Engineering Manager",
       "type": "Tech",
-      "description": "Led development of scalable web applications using Angular and TypeScript",
+      "description": "Driving technical strategy and architecture for YouTube's partner contracts and payments platform, processing billions in annual partner payments. Building and scaling full-stack systems while mentoring engineering teams through complex technical challenges.",
       "stats": {
         "years": "2021-Present",
-        "skills": ["Angular", "TypeScript", "RxJS", "SCSS"]
+        "skills": ["Payment Systems", "Technical Architecture", "Web Development", "UX Design", "Technical Leadership"]
       }
     },
     {
@@ -20,10 +20,10 @@
       "sprite": "assets/images/companies/mlp.png",
       "level": "Software Engineer",
       "type": "Finance",
-      "description": "Built and maintained full-stack applications with modern frameworks",
+      "description": "Technical lead for the firm's next-generation UI platform, overhauling trading desktops with micro-frontend architecture. Developed real-time web and mobile applications and created a design system of shared Angular components for consistent firm-wide applications.",
       "stats": {
         "years": "2018-2021",
-        "skills": ["React", "Node.js", "MongoDB", "AWS"]
+        "skills": ["Angular", "Node.js", "MongoDB", "Micro-frontend Architecture", "Design Systems", "Real-time Applications"]
       }
     }
   ]
