@@ -110,13 +110,7 @@
 // Hide controls on very small screens if needed
 @media (max-width: 480px) {
   .audio-controls {
-    .volume-slider {
-      display: none;
-    }
-    
-    .mute-button {
-      display: none;
-    }
+    display: none;
   }
 }
 
