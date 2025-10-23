@@ -1,3 +1,5 @@
+import { BattleOption } from './battle-option.model';
+
 export interface SiteConfig {
   trainerName: string;
   emailConfig: {
@@ -6,12 +8,4 @@ export interface SiteConfig {
     publicKey: string;
   };
   battleOptions: BattleOption[];
-}
-
-export interface BattleOption {
-  id: string;
-  label: string;
-  route: string;
-  component: string;
-  configFile: string;
 }

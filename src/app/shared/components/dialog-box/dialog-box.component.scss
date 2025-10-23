@@ -37,6 +37,22 @@
       .item-value {
         font-size: 14px;
         color: #666;
+
+        .clickable-link {
+          color: #0066cc;
+          text-decoration: underline;
+          cursor: pointer;
+          transition: color 0.2s ease;
+
+          &:hover {
+            color: #004499;
+            text-decoration: none;
+          }
+
+          &:visited {
+            color: #663399;
+          }
+        }
       }
     }
   }

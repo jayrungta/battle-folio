@@ -83,4 +83,12 @@ export class DynamicViewComponent implements OnInit {
   getHeaderTitle(): string {
     return this.viewConfig?.title || 'MENU';
   }
+
+  getDialogBoxItems(): any[] {
+    return (this.viewConfig as any)?.items || [];
+  }
+
+  getContent(): string {
+    return (this.viewConfig as any)?.content || '';
+  }
 }

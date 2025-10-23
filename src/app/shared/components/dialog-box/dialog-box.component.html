@@ -2,8 +2,19 @@
   <div class="content" *ngIf="content">{{ content }}</div>
   <div class="items" *ngIf="items && items.length > 0">
     <div *ngFor="let item of items" class="item">
-      <div class="item-label">{{ item.label || item.name }}</div>
-      <div class="item-value">{{ item.value || item.description }}</div>
+      <div class="item-label">{{ item.label }}</div>
+      <div class="item-value">
+        <a *ngIf="item.link" 
+           [href]="item.link" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           class="clickable-link">
+          {{ item.value }}
+        </a>
+        <span *ngIf="!item.link">
+          {{ item.value }}
+        </span>
+      </div>
     </div>
   </div>
 </div>

@@ -17,23 +17,23 @@
     <div [ngSwitch]="componentType">
       <app-pokemon-picker
         *ngSwitchCase="'pokemon-picker'"
-        [items]="viewConfig.items">
+        [items]="viewConfig['items']">
       </app-pokemon-picker>
 
       <app-item-bag
         *ngSwitchCase="'item-bag'"
-        [items]="viewConfig.items">
+        [items]="viewConfig['items']">
       </app-item-bag>
 
       <app-dialog-box
         *ngSwitchCase="'dialog-box'"
-        [items]="viewConfig.items"
-        [content]="viewConfig['content']">
+        [items]="getDialogBoxItems()"
+        [content]="getContent()">
       </app-dialog-box>
 
       <app-contact-form
         *ngSwitchCase="'contact-form'"
-        [content]="viewConfig['content']">
+        [content]="getContent()">
       </app-contact-form>
 
       <div *ngSwitchDefault class="error">

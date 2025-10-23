@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ItemBagItem } from '../../../core/models';
 
 @Component({
   selector: 'app-item-bag',
@@ -9,7 +10,7 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./item-bag.component.scss']
 })
 export class ItemBagComponent implements OnInit, OnChanges {
-  @Input() items: any[] = [];
+  @Input() items: ItemBagItem[] = [];
 
   selectedIndex: number = -1;
   selectedProject: any = null;

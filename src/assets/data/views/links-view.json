@@ -4,15 +4,18 @@
   "items": [
     {
       "label": "GitHub",
-      "value": "github.com/jayrungta"
+      "value": "github.com/jayrungta",
+      "link": "https://github.com/jayrungta"
     },
     {
       "label": "LinkedIn",
-      "value": "linkedin.com/in/jay-rungta"
+      "value": "linkedin.com/in/jay-rungta",
+      "link": "https://linkedin.com/in/jay-rungta"
     },
     {
       "label": "Personal Website",
-      "value": "jayrungta.com"
+      "value": "jayrungta.com",
+      "link": "https://jayrungta.com"
     }
   ]
 }

@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CompanyDetailsComponent } from '../company-details/company-details.component';
+import { PokemonPickerItem } from '../../../core/models';
 
 @Component({
   selector: 'app-pokemon-picker',
@@ -10,7 +11,7 @@ import { CompanyDetailsComponent } from '../company-details/company-details.comp
   styleUrls: ['./pokemon-picker.component.scss']
 })
 export class PokemonPickerComponent {
-  @Input() items: any[] = [];
+  @Input() items: PokemonPickerItem[] = [];
   
   selectedCompany: any = null;
   showDetails = false;

@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { DialogBoxItem } from '../../../core/models';
 
 @Component({
   selector: 'app-dialog-box',
@@ -10,5 +11,5 @@ import { CommonModule } from '@angular/common';
 })
 export class DialogBoxComponent {
   @Input() content: string = '';
-  @Input() items: any[] = [];
+  @Input() items: DialogBoxItem[] = [];
 }
