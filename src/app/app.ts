@@ -45,13 +45,10 @@ export class App implements OnInit, OnDestroy {
   }
 
   toggleMute(): void {
+    console.log('🎵 Button clicked - toggling mute');
     this.audioService.toggleMute();
   }
 
-  onVolumeChange(event: Event): void {
-    const target = event.target as HTMLInputElement;
-    this.audioService.setVolume(parseFloat(target.value));
-  }
 
   // Handle user interaction to enable autoplay
   onUserInteraction(): void {
