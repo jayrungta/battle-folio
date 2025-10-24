@@ -1,7 +1,8 @@
 import { Component, signal, OnInit, OnDestroy } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { AudioService, AudioState } from './core/services';
+import { Title } from '@angular/platform-browser';
+import { AudioService, AudioState, ConfigService } from './core/services';
 
 @Component({
   selector: 'app-root',
@@ -18,9 +19,18 @@ export class App implements OnInit, OnDestroy {
     isMuted: false
   };
 
-  constructor(private audioService: AudioService) {}
+  constructor(
+    private audioService: AudioService,
+    private configService: ConfigService,
+    private titleService: Title
+  ) {}
 
   ngOnInit(): void {
+    // Load site config and set page title
+    this.configService.getSiteConfig().subscribe(config => {
+      this.titleService.setTitle(config.pageTitle);
+    });
+
     // Subscribe to audio state changes
     this.audioService.getAudioState().subscribe(state => {
       this.audioState = state;

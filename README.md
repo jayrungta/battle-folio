@@ -1,4 +1,4 @@
-# Retro Pokémon-Style Portfolio Website
+# Retro Pokémon-Style Battle Portfolio Website
 
 A retro, Pokémon‑style portfolio you can actually fork and make your own. The UI is driven by JSON files, so swapping my details for yours is mostly editing data and dropping in your assets.
 
@@ -26,13 +26,14 @@ npm start
 Build for production:
 ```bash
 npm run build
-# output in dist/pokemon-portfolio
+# output in dist/
 ```
 
 ## Make it yours (5–10 mins)
 
 1) Update the main config
 - Edit `src/assets/data/site-config.json`
+  - `pageTitle`: Your site's title
   - `trainerName`: Your name in the battle screen
   - `battleOptions`: Menu items and their routes
   - `emailConfig`: Your EmailJS IDs (or switch the contact page to a static dialog, see below)
