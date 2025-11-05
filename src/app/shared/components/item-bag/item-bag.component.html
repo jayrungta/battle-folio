@@ -27,11 +27,19 @@
     <div class="description-content">
       <div class="description-text">
         {{ selectedProject.description }}
-        <div class="github-link" *ngIf="selectedProject.githubUrl">
-          <a [href]="selectedProject.githubUrl" target="_blank" class="external-link">
-            <span class="link-text">View on GitHub</span>
-            <span class="external-icon">↗</span>
-          </a>
+        <div class="project-links">
+          <div class="github-link" *ngIf="selectedProject.githubUrl">
+            <a [href]="selectedProject.githubUrl" target="_blank" class="external-link">
+              <span class="link-text">View on GitHub</span>
+              <span class="external-icon">↗</span>
+            </a>
+          </div>
+          <div class="live-link" *ngIf="selectedProject.liveUrl">
+            <a [href]="selectedProject.liveUrl" target="_blank" class="external-link">
+              <span class="link-text">View Link</span>
+              <span class="external-icon">↗</span>
+            </a>
+          </div>
         </div>
       </div>
     </div>

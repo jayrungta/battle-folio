@@ -12,6 +12,12 @@
       "name": "Battle Folio - My Portfolio Website",
       "githubUrl": "https://github.com/jayrungta/battle-folio",
       "description": "Retro Pokémon-style portfolio website with data-driven architecture."
+    },
+    {
+      "id": "project3",
+      "name": "Wireless Ad-Hoc Network Controlled Rovers",
+      "liveUrl": "https://www.ijcaonline.org/archives/volume117/number22/20690-3579/",
+      "description": "A system of mobile wireless ad hoc network controlled rovers built using Arduino chipsets. Designed to demonstrate fast data transfers and energy efficiency for surveying areas where human intervention may not be possible. Research paper published in the International Journal of Computer Applications."
     }
   ]
 }
