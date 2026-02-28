@@ -1,0 +1,28 @@
+{
+  "viewType": "dialog-box",
+  "title": "CONNECT",
+  "items": [
+    {
+      "id": "github",
+      "label": "GitHub",
+      "value": "github.com/jayrungta",
+      "link": "https://github.com/jayrungta"
+    },
+    {
+      "id": "linkedin",
+      "label": "LinkedIn",
+      "value": "linkedin.com/in/jayrungta",
+      "link": "https://linkedin.com/in/jayrungta"
+    },
+    {
+      "id": "hackernoon",
+      "label": "HackerNoon",
+      "value": "hackernoon.com/u/jrungta",
+      "link": "https://hackernoon.com/u/jrungta"
+    }
+  ],
+  "contact": {
+    "title": "SEND A MESSAGE",
+    "content": "Got something on your mind?"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "viewType": "dialog-box",
+  "title": "CONTENT",
+  "items": [
+    {
+      "id": "web-dev-navigation-api",
+      "type": "article",
+      "label": "Navigation API is now Baseline Newly Available",
+      "value": "web.dev · Feb 2026",
+      "link": "https://web.dev/blog/baseline-navigation-api"
+    },
+    {
+      "id": "hackernoon-bnpl",
+      "type": "article",
+      "label": "The Ghost in the Checkout: Buy Now, Pay Later in 2026",
+      "value": "HackerNoon · Feb 2026",
+      "link": "https://hackernoon.com/the-ghost-in-the-checkout-how-are-buy-now-pay-later-companies-doing-in-2026"
+    },
+    {
+      "id": "hackernoon-stablecoins",
+      "type": "article",
+      "label": "The Internet of Value: How Stablecoins are Modernizing the Economy",
+      "value": "HackerNoon · Feb 2026",
+      "link": "https://hackernoon.com/the-internet-of-value-how-stablecoins-are-modernizing-the-global-economy"
+    },
+    {
+      "id": "hackernoon-prediction-markets",
+      "type": "article",
+      "label": "Prediction Markets Are Swallowing the Real World",
+      "value": "HackerNoon · Dec 2025",
+      "link": "https://hackernoon.com/prediction-markets-are-swallowing-the-real-world"
+    },
+    {
+      "id": "web-dev-urlpattern",
+      "type": "article",
+      "label": "URLPattern is now Baseline Newly Available",
+      "value": "web.dev · Oct 2025",
+      "link": "https://web.dev/blog/baseline-urlpattern"
+    }
+  ]
+}

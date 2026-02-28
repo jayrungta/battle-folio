@@ -91,4 +91,8 @@ export class DynamicViewComponent implements OnInit {
   getContent(): string {
     return (this.viewConfig as any)?.content || '';
   }
+
+  getContactConfig(): any {
+    return (this.viewConfig as any)?.contact || null;
+  }
 }

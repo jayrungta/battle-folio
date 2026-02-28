@@ -17,18 +17,18 @@
       "configFile": "views/projects-view.json"
     },
     {
-      "id": "links",
-      "label": "LINKS",
-      "route": "/links",
+      "id": "content",
+      "label": "CONTENT",
+      "route": "/content",
       "component": "dialog-box",
-      "configFile": "views/links-view.json"
+      "configFile": "views/content-view.json"
     },
     {
-      "id": "contact",
-      "label": "CONTACT",
-      "route": "/contact",
-      "component": "contact-form",
-      "configFile": "views/contact-view.json"
+      "id": "connect",
+      "label": "CONNECT",
+      "route": "/connect",
+      "component": "dialog-box",
+      "configFile": "views/connect-view.json"
     }
   ],
   "emailConfig": {

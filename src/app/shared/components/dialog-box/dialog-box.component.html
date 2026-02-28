@@ -1,20 +1,110 @@
 <div class="dialog-box">
   <div class="content" *ngIf="content">{{ content }}</div>
-  <div class="items" *ngIf="items && items.length > 0">
-    <div *ngFor="let item of items" class="item">
-      <div class="item-label">{{ item.label }}</div>
-      <div class="item-value">
-        <a *ngIf="item.link" 
-           [href]="item.link" 
-           target="_blank" 
-           rel="noopener noreferrer"
-           class="clickable-link">
-          {{ item.value }}
-        </a>
-        <span *ngIf="!item.link">
-          {{ item.value }}
-        </span>
-      </div>
+  <div class="contact-section" *ngIf="contact">
+    <div class="contact-title">{{ contact.title }}</div>
+    <app-contact-form [content]="contact.content"></app-contact-form>
+  </div>
+  <div class="items" *ngIf="items && items.length > 0" [class.items-below-contact]="contact">
+    <ng-container *ngFor="let item of items; let i = index">
+    <!-- Section header — rendered once per type (article, talk, …) -->
+    <div class="section-header" *ngIf="isFirstOfType(item, i)">
+      {{ getSectionLabel(item.type) }}
     </div>
+    <div class="item" [class.item-with-icon]="item.type">
+
+      <!-- Pixel art icon for typed items -->
+      <div class="item-icon" *ngIf="item.type">
+        <ng-container [ngSwitch]="item.type">
+
+          <!--
+            16×16 open book sprite — article
+            Left cover (col 1) | left page (cols 2-6) | spine (cols 7-8) | right page (cols 9-12) | right cover (col 13)
+            Four text lines on the right page at rows 4, 6, 8, 10
+          -->
+          <svg *ngSwitchCase="'article'"
+               xmlns="http://www.w3.org/2000/svg"
+               viewBox="0 0 16 16" width="28" height="28"
+               shape-rendering="crispEdges"
+               aria-label="Article">
+            <!-- Top/bottom cover border -->
+            <rect x="1" y="2"  width="13" height="1" fill="#222"/>
+            <rect x="1" y="12" width="13" height="1" fill="#222"/>
+            <!-- Left/right cover strips -->
+            <rect x="1"  y="2" width="1" height="11" fill="#222"/>
+            <rect x="13" y="2" width="1" height="11" fill="#222"/>
+            <!-- Spine (2px) -->
+            <rect x="7" y="2" width="2" height="11" fill="#555"/>
+            <!-- Left page -->
+            <rect x="2" y="3" width="5" height="9" fill="#f0eedc"/>
+            <!-- Right page -->
+            <rect x="9" y="3" width="4" height="9" fill="#f0eedc"/>
+            <!-- Text lines on right page -->
+            <rect x="9" y="4"  width="4" height="1" fill="#bbb"/>
+            <rect x="9" y="6"  width="4" height="1" fill="#bbb"/>
+            <rect x="9" y="8"  width="4" height="1" fill="#bbb"/>
+            <rect x="9" y="10" width="3" height="1" fill="#bbb"/>
+          </svg>
+
+          <!--
+            16×16 monitor + play triangle sprite — talk
+            Bezel (cols 0-13, rows 1-10) | screen (cols 1-12, rows 2-9)
+            Right-pointing play ▶ triangle in screen center
+            Stand pole (cols 5-8, row 11) | stand base (cols 3-10, row 12)
+          -->
+          <svg *ngSwitchCase="'talk'"
+               xmlns="http://www.w3.org/2000/svg"
+               viewBox="0 0 16 16" width="28" height="28"
+               shape-rendering="crispEdges"
+               aria-label="Talk">
+            <!-- Monitor bezel -->
+            <rect x="0" y="1" width="14" height="10" fill="#222"/>
+            <!-- Screen interior -->
+            <rect x="1" y="2" width="12" height="8"  fill="#0a0a20"/>
+            <!--
+              Play triangle (right-pointing ▶):
+              col 3: rows 3-8 (left edge, full height)
+              col 4: rows 4-7
+              col 5: rows 5-6 (tip)
+            -->
+            <rect x="3" y="3" width="1" height="6" fill="#cc0000"/>
+            <rect x="4" y="4" width="1" height="4" fill="#cc0000"/>
+            <rect x="5" y="5" width="1" height="2" fill="#cc0000"/>
+            <!-- Stand pole -->
+            <rect x="5"  y="11" width="4" height="1" fill="#222"/>
+            <!-- Stand base -->
+            <rect x="3"  y="12" width="8" height="1" fill="#222"/>
+          </svg>
+
+        </ng-container>
+      </div>
+
+      <!-- Text content (typed items) -->
+      <div class="item-text" *ngIf="item.type">
+        <div class="item-label">
+          <a *ngIf="item.link"
+             [href]="item.link"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="item-link">{{ item.label }}</a>
+          <span *ngIf="!item.link">{{ item.label }}</span>
+        </div>
+        <div class="item-value">{{ item.value }}</div>
+      </div>
+
+      <!-- Fallback layout for items without type (connect page links) -->
+      <ng-container *ngIf="!item.type">
+        <div class="item-label">{{ item.label }}</div>
+        <div class="item-value">
+          <a *ngIf="item.link"
+             [href]="item.link"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="clickable-link">{{ item.value }}</a>
+          <span *ngIf="!item.link">{{ item.value }}</span>
+        </div>
+      </ng-container>
+
+    </div>
+    </ng-container>
   </div>
 </div>

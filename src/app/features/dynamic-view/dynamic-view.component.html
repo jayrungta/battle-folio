@@ -28,7 +28,8 @@
       <app-dialog-box
         *ngSwitchCase="'dialog-box'"
         [items]="getDialogBoxItems()"
-        [content]="getContent()">
+        [content]="getContent()"
+        [contact]="getContactConfig()">
       </app-dialog-box>
 
       <app-contact-form

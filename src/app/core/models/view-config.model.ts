@@ -9,7 +9,8 @@ export interface ViewConfig {
 export interface DialogBoxItem {
   label: string;
   value: string;
-  link?: string; // Optional link field for clickable items
+  link?: string;
+  type?: 'article' | 'talk';
 }
 
 // Pokemon picker item interface
