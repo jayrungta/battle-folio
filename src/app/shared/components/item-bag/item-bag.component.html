@@ -40,6 +40,18 @@
               <span class="external-icon">↗</span>
             </a>
           </div>
+          <div class="ios-link" *ngIf="selectedProject.iosUrl">
+            <a [href]="selectedProject.iosUrl" target="_blank" class="external-link">
+              <img src="assets/images/items/app-store.png" alt="App Store" class="store-icon" />
+              <span class="link-text">App Store</span>
+            </a>
+          </div>
+          <div class="android-link" *ngIf="selectedProject.androidUrl">
+            <a [href]="selectedProject.androidUrl" target="_blank" class="external-link">
+              <img src="assets/images/items/google-play.png" alt="Google Play" class="store-icon" />
+              <span class="link-text">Google Play</span>
+            </a>
+          </div>
         </div>
       </div>
     </div>

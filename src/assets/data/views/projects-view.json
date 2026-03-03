@@ -5,7 +5,9 @@
     {
       "id": "project1",
       "name": "Divy - Expense Management App",
-      "description": "A mobile app that allows you to split expenses with friends. All the functionality from leading expense split apps, but for free. Coming soon to the App and Play Store."
+      "description": "A mobile app that allows you to split expenses with friends. All the functionality from leading expense split apps, but for free.",
+      "iosUrl": "https://apps.apple.com/us/app/divy-split-expenses-easily/id6757411017",
+      "androidUrl": "https://play.google.com/store/apps/details?id=com.divyapp.app"
     },
     {
       "id": "project2",

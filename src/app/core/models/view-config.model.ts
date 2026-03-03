@@ -35,4 +35,6 @@ export interface ItemBagItem {
   technologies: string[];
   githubUrl?: string;
   liveUrl?: string;
+  iosUrl?: string;
+  androidUrl?: string;
 }
